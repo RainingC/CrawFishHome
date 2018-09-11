@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> *** - 课程</title>
+    <link rel="stylesheet" href="css/base.css" type="text/css"/>
+    <link rel="stylesheet" href="layui/css/layui.css" type="text/css"/>
+    <!--<link rel="stylesheet" href="css/bootstrap.css" type="text/css"/>-->
+    <link rel="stylesheet" href="bootstrap-3.3.7/css/bootstrap.css">
+    <link href="css/specificClass.css" type="text/css" rel="stylesheet"/>
+    <link rel="stylesheet" href="css/regedit.css" type="text/css">
+    <link rel="stylesheet" href="css/general.css" type="text/css"/>
+
+
+</head>
+<script src="js/jquery-3.3.1.js"></script>
+<!--<script src="js/layer.js" type="application/javascript"></script>-->
+<script src="layui/layui.js" type="application/javascript"></script>
+<script src="js/getUrlParam.js"></script>
+<script src="js/jquery.cookie.js"></script>
+
+<script src="js/specificClass.js"></script>
+<script src="js/jquery.validate.js" type="application/javascript"></script>
+<script src="js/general.js" type="application/javascript"></script>
+<script src="js/index1.js" type="application/javascript"></script>
+<body id="body">
+<div id="regedit-body">
+    <div id="regedit-title">
+        <div id="regedit-title1"></div>
+    </div>
+    <div id="regedit_middle">
+        <ul>
+            <li><img src="images/lqlogo.png"style="width: 50px" height="50"></li>
+            <li><span>手机号登录</span></li>
+        </ul>
+    </div>
+    <div id="regedit-title-right"></div>
+    <div id="regedit-title-right1">
+        <span name="ideas">使用短信验证登录</span>
+    </div>
+    <div id="regedit-form">
+        <form action="" method="post" id="regedited">
+            <div class="regedit-user">
+                <div class="regedit-user-left">
+                </div>
+                <div class="regedit_input">
+                    <input type="text" placeholder="请输入手机号" style="border: none" name="phone">
+                </div>
+            </div>
+            <div class="regedit-user1">
+                <div class="regedit-user-left1">
+                </div>
+                <div class="regedit_input">
+                    <input type="password" placeholder="请输入密码" style="border: none" name="pwd">
+                </div>
+            </div>
+            <div id="regedit_btn"><input type="button" value="登录"></div>
+            <div id="regedit-last">
+                <ul>
+                    <li><input type="checkbox" checked></li>
+                    <li><p>十天免登录</p></li>
+                    <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>|</span></li>
+                    <li><a href="https://mob.163.com/web/passwdfind">忘记密码？</a></li>
+                </ul>
+            </div>
+            <div id="regedit-last-right">
+                <span style="color: #49AF4F" name="login">去注册 ></span>
+            </div>
+        </form>
+    </div>
+</div>
+<div id="header">
+    <div>
+        <div id="logo"><a href="index.html" target="_self"><img src="images/logo.png"></a></div>
+        <div id="header-guide">
+            <a href="allClass.html?name=全部课程&type=0" target="_blank"><div class="header-guide">精选好课</div></a>
+            <a href="allClass.html?name=全部课程&type=0" target="_blank"><div class="header-guide">免费好课</div></a>
+            <a href="" target="_blank"><div class="header-guide">分享网站</div></a>
+        </div>
+        <input type="text" id="header-search" value="搜索课程...">
+        <a href="" target="_blank" id="searchbutton"><img src="images/header-search.png" id="header-icon"></a>
+        <div id="header-options">
+            <a href="myStudy.html" target="_self" id="wdxx">我的学习</a>
+            <i id="news-count">0</i>
+            <a href="news.html" target="_self" id="news">消息</a>
+            <i id="cart-count">0</i>
+            <a href="cart.html" target="_self" id="gwc">购物车</a>
+            <span>|</span>
+            <a href="" id="weidenglu" title="登录/注册">登录/注册</a>
+            <a href="userMain.html" id="yidenglu">..</a>
+            <div id="touxiang"><img src="images/small.jpg"></div>
+        </div>
+        <div id="touxiang-details">
+            <div id="xiaojiantou"></div>
+            <div id="details">
+                <table class="layui-table" lay-skin="line" >
+                    <colgroup>
+                        <col width="150">
+                        <col width="150">
+                        <col width="200">
+                    </colgroup>
+                    <tr>
+                        <td style="display: block;width: 145px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;" title="个性签名">个性签名。。ffffffffffffffffffffff</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <button class="layui-btn layui-btn-primary" onclick="window.location.href='myOrder.html'">我的订单</button>
+                <br><br>
+                <button class="layui-btn layui-btn-danger" id="calcel">注销</button>
+            </div>
+        </div>
+        <div id="header-fenxiang">
+            <a href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=www.baidu.com" target="_blank"><div class="header-fx" id="header-fx1"></div></a>
+            <a href="http://service.weibo.com/share/share.php?url=www.baidu.com" target="_blank"><div class="header-fx" id="header-fx2"></div></a>
+            <a href="https://api.addthis.com/oexchange/0.8/forward/wechat/offer?url=www.baidu.com" target="_blank"><div class="header-fx" id="header-fx3"></div></a>
+        </div>
+        <div id="search-tishi">
+        </div>
+    </div>
+</div>
+<div id="ding"></div>
+<div class="headFly"></div>
+<div id="right-float">
+    <div class="right-float-div" id="right-float-jqr"></div>
+    <a href="" onclick="return false"><div id="right-jqr"></div></a>
+    <div class="rf-line"></div>
+    <div class="right-float-div"><img src="images/gongzhonghao.png" class="right-icon"></div>
+    <a href="" onclick="return false"><div id="right-gzh"><p>关&nbsp;注<br>我&nbsp;们</p></div></a>
+    <div class="rf-line"></div>
+    <div class="right-float-div"><img src="images/huidaodingbu.png" class="right-icon "></div>
+    <a href="#" id="back_to_top"><div id="right-hddb"><p>回&nbsp;到<br>顶&nbsp;部</p></div></a>
+    <div id="erweima">
+        <img src="images/gongzhonghao.jpg" id="weixin">
+        <span>关注微信</span>
+    </div>
+</div>
+<div class="navBox">
+    <div class="navHead">
+        <ul>
+            <li><a href="#" target="_self" class="head_home">首页</a></li>
+            <li>
+                <span class="arrow"></span>
+                <span class="arrow_next">软件办公</span>
+            </li>
+        </ul>
+    </div>
+    <ul class="nav_flow">
+        <li class="nav_flow_li"><a href="#" target="_self">精选好课</a></li>
+    </ul>
+    <ul class="nav_specific">
+        <li class="nav_li nav_li_all"><a href="#" target="_self">全部</a></li>
+    </ul>
+</div>
+<div class="allCourse">
+    <div class="classNav">
+        <ul>
+            <li><a href="#" target="_self" class="nav_a">好评</a></li>
+            <li><a href="#" target="_self">畅销</a></li>
+            <li><a href="#" target="_self">新课</a></li>
+        </ul>
+    </div>
+    <div class="classAll">
+        <!--<a href="#" target="_self">-->
+            <!--<div class="class">-->
+                <!--<div class="classImg"><img src="images/classImg1.png" width="223"></div>-->
+                <!--<div class="classTit">【送模板】工作性PPT应该这么做</div>-->
+                <!--<div class="classTea">幻方秋叶PPT</div>-->
+                <!--<div class="classEval">22444人学习</div>-->
+                <!--<div class="classPrice">￥249.00</div>-->
+                <!--<div id=""></div>-->
+            <!--</div>-->
+        <!--</a>-->
+    </div>
+</div>
+<div class="classFoot">
+    <ul class="ux_page">
+        <li class="page_li page_up"><a href="#" target="_self">上一页</a></li>
+        <li class="page_li page_num"><a href="#" target="_self">1</a></li>
+        <li class="page_li page_num"><a href="#" target="_self">2</a></li>
+        <li class="page_li page_num"><a href="#" target="_self">3</a></li>
+        <li class="page_li page_down"><a href="#" target="_self">下一页</a></li>
+    </ul>
+</div>
+<div id="footer">
+    <div id="footer-bottom">
+        <div class="footer-center">
+            <ul>
+                <li>蓝桥云课堂 专注于职场与生活领域的技能提升。</li>
+            </ul>
+            <ul>
+                <li><a href="">关于我们</a></li>
+                <li><a href="">联系我们</a></li>
+                <li><a href="">帮助中心</a></li>
+                <li><a href="">企业培训</a></li>
+                <li><a href="">中国大学MOOC</a></li>
+                <li><a href="">蓝桥卡搭编程</a></li>
+                <li><a href="">蓝桥100分</a></li>
+            </ul>
+            <ul>
+                <li id="copyright">©1997-2018 网易公司 版权所有</li>
+            </ul>
+        </div>
+    </div>
+</div>
+</body>
+</html>

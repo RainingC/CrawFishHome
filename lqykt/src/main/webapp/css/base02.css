@@ -1,0 +1,174 @@
+body div{
+    color: gray;
+}
+* {
+    margin: 0;
+    padding: 0
+}
+
+em, i {
+    font-style: normal
+}
+
+li {
+    list-style: none
+}
+*:focus {
+    outline: none;
+}
+
+img {
+    border: 0;
+    vertical-align: middle
+}
+
+button {
+    cursor: pointer
+}
+
+a {
+    color: #444444;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #10ae58;
+    text-decoration: none;
+}
+
+button, input {
+    font-family: Microsoft YaHei, tahoma, arial, Hiragino Sans GB, \\5b8b\4f53, sans-serif
+}
+
+body {
+    -webkit-font-smoothing: antialiased;
+    font: 12px / 1.5 Microsoft YaHei, tahoma, arial, Hiragino Sans GB, \\5b8b\4f53, sans-serif;
+    color: #666
+}
+#fuck-daohanglan{
+    -webkit-box-shadow: 0 0 5px black;
+    position: relative;
+    top: 70px;
+    padding: 10px;
+}
+.fuck-ins{
+    padding: 4px;
+}
+.fuck-area{
+    -webkit-box-shadow: 0 0 1px #b2b2b2 ;
+    width: 800px;
+    height: 700px;
+    box-shadow: #1b6d85;
+}
+h1{
+    font-size: 25px;
+    font-weight: 400;
+    color: black;
+}
+.fuck-baseinfo{
+    position: relative;
+    left: 15px;
+    top: 15px;
+}
+.fuck-add{
+    position: relative;
+    top: 30px;
+    left: 8px;
+}
+.chaoxiao{
+    position: relative;
+    top: 150px;
+    left: 500px;
+}
+.fuck-btn{
+    position: relative;
+    top: 155px;
+    left: 502px;
+}
+.fuck-btn a{
+    font-size: 20px;
+    color: red;
+    font-weight: 400;
+}
+
+.file-box {
+    position: relative;
+    display: inline-block;
+    top: -100px;
+    left: 500px;
+}
+.file-box img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    position: absolute;
+    top: -40px;
+    left: 6px;
+    display: inline-block;
+    border: none;
+}
+.file-box .txt,.file-box .file {
+    width: 70px;
+    height: 36px;
+    position: absolute;
+    top: -20px;
+    left: 100px;
+    text-align: center;
+}
+.fuck-headimg{
+    position: relative;
+    top: -50px;
+    left: -100px;
+}
+.my-collect{
+    width: 300px;
+    height: 100px;
+    background-color:#c9e2b3;
+    position: relative;
+    top: 70px;
+    left: 40px;
+}
+.course_name{
+    position: relative;
+    top: 10px;
+    left: 85px;
+}
+#container{
+    width:300px;
+    height:300px;
+    -webkit-box-shadow: 0 0 20px #0C0C0C ;
+    position: relative;
+    top: 10px;
+    left: 10px;
+}
+.daohanglan{
+    position: relative;
+    top: 0px;
+}
+.course_n{
+    font-size: 20px;
+    position: relative;
+    top: 12px;
+    left: 3px;
+
+}
+.course_name{
+    position: relative;
+
+    left: 10px;
+    width:210px ;
+    height: 250px;
+    background-color: #efefef;
+    border: 2px solid;
+}
+.img_p{
+    position: relative;
+    top: 5px;
+    left: 0;
+}
+.bar {
+    margin-top: 10px;
+    height: 10px;
+    max-width: 370px;
+    background: green;
+}

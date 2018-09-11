@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>蓝桥云课堂</title>
+    <link rel="stylesheet" href="css/base.css" type="text/css">
+    <link href="bootstrap-3.3.7/css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="layui/css/layui.css" type="text/css" media="all">
+    <link href="css/backtages.css" rel="stylesheet" type="text/css">
+    <link href="css/delectUser.css"rel="stylesheet" type="text/css">
+    <link href="css/delCourse.css" rel="stylesheet" type="text/css">
+    <link href="css/delPeriod.css" rel="stylesheet" type="text/css">
+
+    <script src="js/jquery-3.3.1.js" type="application/javascript"></script>
+    <script src="bootstrap-3.3.7/js/bootstrap.js" type="application/javascript"></script>
+    <script src="layui/layui.js" type="application/javascript"></script>
+    <script src="js/jquery.validate.js" type="application/javascript"></script>
+    <script src="js/jsAddress.js" type="application/javascript"></script>
+    <script src="js/backtages.js" type="application/javascript"></script>
+    <!--<script src="css/backtages.css" type="application/javascript"></script>-->
+    <script src="js/DeletetUser.js" type="application/javascript"></script>
+    <script src="js/jquery.ui.widget.js"></script>
+    <script src="js/jquery.iframe-transport.js"></script>
+    <script src="js/jquery.fileupload.js"></script>
+    <script>
+        $(function () {
+            $('.fileupload').fileupload({
+                url: "/uploadFile",
+                Type: 'POST',//请求方式 ，可以选择POST，PUT或者PATCH,默认POST
+                dataType: 'json',//服务器返回的数据类型
+                // singleFileUploads: false,//不设置多个文件循环提交，设置后一起提交
+
+                //add函数为选择文件后执行的操作
+                add: function (e, data) {
+                    //获取图片路径并显示预览
+                    var url = getUrl(data.files[0]);
+                    var $img = $("<img>").attr("src", url).css("width","50px")
+                    $("#image").append($img);
+                    //绑定上传提交事件
+                    $("#shangchuan").click(function () {
+                        data.submit();
+                    });
+                },
+                //done函数为上传成功后执行的操作
+                done: function (e, ret) {
+                    if (ret.result.errno == 0) {
+                        // 显示上传成功，并循环输出上传内容预览。
+                        $(".preview").append("<div>上传成功:" + ret.result.data + "</div>");
+                        $.each(ret.result.data, function (index, fileSrc) {
+                            $(".preview").append("<div style='margin-top:10px;'><embed src=" +
+                                fileSrc + " allowscriptaccess='always' " +
+                                "allowfullscreen='true' wmode='opaque' width='280' height='200'>" +
+                                "</embed></div>");
+                        });
+                    } else {
+                        alert("上传失败");
+                    }
+
+                },
+
+                //此方法控制进度条
+                progressall: function (e, data) {
+                    var progress = parseInt(data.loaded / data.total * 100, 10);
+                    $('#progress .bar').css(
+                        'width',
+                        progress + '%'
+                    );
+                },
+
+                //dropZone: $('#dropzone') //此为拖拽文件控制，暂未开发。
+            });
+        });
+        //获取图片地址
+        function getUrl(file) {
+            var url = null;
+            if (window.createObjectURL != undefined) {
+                url = window.createObjectURL(file);
+            } else if (window.URL != undefined) {
+                url = window.URL.createObjectURL(file);
+            } else if (window.webkitURL != undefined) {
+                url = window.webkitURL.createObjectURL(file);
+            }
+            return url;
+        }
+    </script>
+</head>
+<body>
+  <nav class="navbar navbar-default">
+      <div class="container-fluid" style="background-color: rgba(18,21,44,0.8);height: 80px">
+          <div class="navbar-header">
+              <a class="navbar-brand" href="index.html"><img src="images/regeditimage/logo1.png" width="200px" height="50px"></a>
+          </div>
+          <div class="test1">蓝桥云课堂后台管理系统</div>
+      </div>
+  </nav>
+  <div class="zhong">
+      <ul id="daoh">
+          <li id="kind1"><a href="#">&nbsp;&nbsp;&nbsp;后台管理</a></li>
+          <li>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</li>
+          <li id="kind2"><a href="#">————</a></li>
+          <li>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</li>
+          <li id="kind3"><a href="#">————</a></li>
+      </ul>
+  </div>
+  <div class="zhong-left">
+      <div style="width: 140px;text-align: center">
+          <ul class="nav nav-pills nav-stacked">
+              <li class="active"><a href="#">用户管理</a></li>
+              <li class="no1 no"  id="deleteuser"><a href="#">删除用户</a></li>
+              <li class="active"><a href="#">课程管理</a></li>
+              <li class="no2 no"><a href="#">添加课程</a></li>
+              <li class="no2 no"><a href="#">删除课程</a></li>
+              <li class="no2 no"><a href="#">添加课时</a></li>
+              <li class="no2 no"><a href="#">删除课时</a></li>
+              <!--<li class="active"><a href="#">统计分析</a></li>-->
+              <!--<li class="no3 no"><a href="#">用户喜好</a></li>-->
+              <!--<li class="no3 no"><a href="#">订单分析</a></li>-->
+              <li class="active"><a href="#">订单管理</a></li>
+              <li class="no4 no"><a href="#">查看订单</a></li>
+          </ul>
+      </div>
+
+  </div>
+  <div id="bodydetails">
+      <div id="details1" class="bodydetails" style="background-color: white">
+          <table border="1" cellspacing="0" cellpadding="3" class="layui-table">
+              <tr id="tab">
+                  <th>用户ID</th>
+                  <th>用户名</th>
+                  <th>电话号码</th>
+                  <th>头像</th>
+                  <th>密码</th>
+                  <th>QQ</th>
+                  <th>性别<
+                  <th>操作</th>
+              </tr>
+              <!--<tr>-->
+              <!--<td>1</td>-->
+              <!--<td>18419068758</td>-->
+              <!--<td>lanqiao18419068758</td>-->
+              <!--<td>zyh123</td>-->
+              <!--<td>sssss</td>-->
+              <!--<td>aaaaaa</td>-->
+              <!--<td>ddddddd</td>-->
+              <!--<td>qq</td>-->
+              <!--<td>删除</td>-->
+              <!--</tr>-->
+          </table>
+      </div><!--删除用户  孙瑞-->
+      <div id="details2" class="bodydetails" style="background-color: white">
+          <div id="tjkc">
+              <!--<select id="cmbProvince" name="cmbProvince"></select>-->
+              <!--<select id="cmbCity" name="cmbCity"></select>-->
+              <!--<select id="cmbArea" name="cmbArea"></select>-->
+              <form id="tjkcform">
+                  <div class="layui-form-item">
+                      <label class="layui-form-label">课程名</label>
+                      <div class="layui-input-block">
+                          <input type="text" name="coursename"  placeholder="请输入课程名/汉字或英文" autocomplete="off" class="layui-input">
+                      </div>
+                  </div>
+                  <div class="layui-form-item">
+                      <label class="layui-form-label">机构名</label>
+                      <div class="layui-input-block">
+                          <input type="text" name="company"  placeholder="请输入机构名/汉字或英文" autocomplete="off" class="layui-input">
+                      </div>
+                  </div>
+                  <div class="layui-form-item">
+                      <label class="layui-form-label" style="left: -10px">价格</label>
+                      <div class="layui-input-block">
+                          <input type="text" name="price"  placeholder="￥--整数" autocomplete="off" class="layui-input">
+                      </div>
+                  </div>
+                  <div class="layui-form-item">
+                      <label class="layui-form-label" style="left: -15px;width: 100px">课程简介</label>
+                      <div class="layui-input-block">
+                          <input type="text" name="synopsis"  placeholder="请输入课程简介" autocomplete="off" class="layui-input">
+                      </div>
+                  </div>
+                  <label class="layui-form-label" style="width: 100px;left: -15px">课程类别</label>
+                  <div class="layui-input-inline" style="margin-left: 10px">
+                      <select id="cmbProvince" name="cmbProvince" class="form-control"></select>
+                  </div>
+                  <div class="layui-input-inline" style="margin-left: 20px">
+                      <select id="cmbCity" name="cmbCity" class="form-control"></select>
+                  </div>
+                  <div class="layui-input-inline" style="margin-left: 20px">
+                      <select id="cmbArea" name="cmbArea" class="form-control"></select>
+                  </div>
+                  <div style="width:700px;padding:20px;">
+                      <input id="fileupload" class="fileupload" type="file" name="files" multiple="multiple">
+                      <div id="image">预览：</div>
+                      <!--<div id="dropzone" class="fade well">Drop files here</div>-->
+                  </div>
+                  <div class="layui-form-item" style="margin-top: 50px">
+                      <div class="layui-input-block">
+                          <input type="button" class="layui-btn" id="test2" value="提交">
+                          <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                      </div>
+                  </div>
+                  <script>
+                      addressInit('cmbProvince', 'cmbCity', 'cmbArea');
+                  </script>
+              </form>
+          </div>
+      </div><!--添加课程  曹-->
+      <div id="details3" class="bodydetails" style="background-color: white">
+          <div class="courseInfo">
+              <ul>
+                  <li class="info1 info2">课程编号</li>
+                  <li class="info2">课程名</li>
+                  <li class="info2">课程价格</li>
+                  <li class="info2">授课机构</li>
+                  <li class="info2">课程类别</li>
+                  <li class="info2">上架时间</li>
+                  <li class="info2">评分</li>
+                  <li class="info3">浏览量</li>
+              </ul>
+          </div>
+      </div><!--删除课程  李健-->
+      <div id="details4" class="bodydetails" style="background-color: white">
+          <form id="tjksform">
+              <div class="layui-form-item">
+                  <label class="layui-form-label">课程ID</label>
+                  <div class="layui-input-block">
+                      <input type="text" name="courseid"  placeholder="请输入（唯一标志）/数字" autocomplete="off" class="layui-input">
+                  </div>
+              </div>
+              <div class="layui-form-item">
+                  <label class="layui-form-label">课时ID</label>
+                  <div class="layui-input-block">
+                      <input type="text" name="periodid"  placeholder="请输入课时ID/数字(此ID将作为课时的播放顺序标志)" autocomplete="off" class="layui-input">
+                  </div>
+              </div>
+              <div class="layui-form-item">
+                  <label class="layui-form-label">课时名</label>
+                  <div class="layui-input-block">
+                      <input type="text" name="periodname"  placeholder="请输入课时名/汉字或英文" autocomplete="off" class="layui-input">
+                  </div>
+              </div>
+              <div style="width:700px;padding:20px;">
+                  <input id="fileupload1" class="fileupload" type="file" name="files" multiple="multiple">
+                  <div id="image1">预览：</div>
+                  <!--<div id="dropzone" class="fade well">Drop files here</div>-->
+              </div>
+
+              <div class="layui-form-item">
+                  <div class="layui-input-block">
+                      <input type="button" class="layui-btn" id="test3" value="提交">
+                      <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                  </div>
+              </div>
+          </form>
+      </div><!--添加课时  曹-->
+      <div id="details5" class="bodydetails" style="background-color: white">
+          <span class="inputHead">输入要查询的课程id：</span>
+          <input type="text" name="courseName" class="inputTxt">
+          <input type="button" name="searchBtn" value="查询">
+          <div class="courseInfo">
+              <ul>
+                  <li class="info1 info2">课时编号</li>
+                  <li class="info2">课时名</li>
+                  <li class="info2">视频地址</li>
+                  <li class="info2">课程编号</li>
+              </ul>
+          </div>
+          <div class="courseInfo course">
+              <ul>
+                  <li class="info1 info2">课时编号</li>
+                  <li class="info2">课时名</li>
+                  <li class="info2">视频地址</li>
+                  <li class="info3">课程编号</li>
+              </ul>
+              <div class="deBtnP"></div>
+          </div>
+      </div><!--删除课时  李健-->
+      <div id="details6" class="bodydetails" style="background-color: white"></div><!--统计分析  郭-->
+      <div id="details7" class="bodydetails" style="background-color: white"></div><!--订单分析  郭-->
+      <div id="details8" class="bodydetails" style="background-color: white">
+          <div class="courseInfo">
+              <ul>
+                  <li class="info1 info2">订单号<li>
+                  <li class="info2">订单时间<li>
+                  <li class="info2">价格<li>
+                  <li class="info3">交易状态<li>
+              </ul>
+          </div>
+      </div><!--查看订单  孙瑞-->
+  </div>
+  <!--<div class="footer"></div>-->
+</body>
+</html>

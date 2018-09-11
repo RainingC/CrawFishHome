@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>短信登录</title>
+    <link rel="stylesheet" href="bootstrap-3.3.7/css/bootstrap.css" type="text/css">
+    <link rel="stylesheet" href="css/base.css" type="text/css">
+    <link rel="stylesheet" href="css/general.css" type="text/css">
+    <link rel="stylesheet" href="css/regedit.css" type="text/css">
+    <link rel="stylesheet" href="css/login.css" type="text/css">
+    <link rel="stylesheet" href="css/validation.css">
+    <link rel="stylesheet" href="css/jigsaw.css">
+</head>
+<body>
+<script src="js/jquery-3.3.1.js" type="application/javascript"></script>
+<script src="js/jquery.validate.js" type="application/javascript"></script>
+<script src="bootstrap-3.3.7/js/bootstrap.js" type="application/javascript"></script>
+<!--<script src="js/layer.js" type="application/javascript"></script>-->
+<script src="layui/layui.js" type="application/javascript"></script>
+<script src="js/jigsaw.js" type="application/javascript"></script>
+<!--<script src="js/index.js" type="application/javascript"></script>-->
+<script>
+    jQuery.validator.addMethod("regex", //addMethod第1个参数:方法名称
+        function (value, element, params) {//addMethod第2个参数:验证方法，
+            //验证方法参数（被验证元素的值，被验证元素，参数）
+            var exp = new RegExp(params);//实例化正则对象，参数为用户传入的正则表达式
+            return exp.test(value);//测试是否匹配
+        }, "格式错误");
+    $(function () {
+        jigsaw.init(document.getElementById('captcha'), function () {
+            document.getElementById('msg').innerHTML = '验证通过了哦！'
+        })
+
+        $("input[name='vnode']").click(function () {
+            $.ajax(
+                {
+                    url: "/MessageServlet",
+                    type: "post",
+                    data: {"phone": $("input[name='phone']").val()},
+                    dataType: "text",
+                    success: function () {
+                        layui.use('layer', function () {
+                            var layer = layui.layer;
+                            layer.msg("验证码已发送！", {time: 1000});
+                        })
+
+                    }
+                }
+            )
+        })
+
+        $("input[name='btn']").click(function () {
+            $.ajax(
+                {
+                    url: "/NodeServlet",
+                    type: "post",
+                    data: {"phone": $("input[name='phone']").val()},
+                    dataType: "json",
+                    success: function (result) {
+                        if (result.length > 0) {
+                            layui.use('layer', function () {
+                                var layer = layui.layer;
+                                layer.msg("欢迎进入蓝桥云课堂", {time: 1000})
+                            })
+
+                            var pho=result[0].user_phone;
+                            document.cookie="user_phone="+pho;
+                            document.cookie="user_id="+result[0].user_id;
+                            var name = result[0].user_name;
+                            document.cookie="user_name="+name;
+                            var time=new Date();
+                            time.setTime(time.getDate()+1);
+                            document.cookie="expires="+time.toGMTString();
+                            setTimeout(function(){window.location.reload();},1000);
+                        }
+                    }
+                }
+            )
+        })
+
+
+        $("#loginned").validate(
+            {
+                onkeyup: true,
+                rules: {
+                    phone: {
+                        required: true,
+                        minlength: 11,
+                        regex: "^1[3|4|5|8][0-9][0-9]{8}$"
+                    },
+                },
+                messages:
+                    {
+                        phone: {
+                            required: "请输入手机号",
+                            minlength: "手机号必须为11位",
+                            regex: "请输入正确对的电话号码格式(^1[3|4|5|8][0-9][0-9]{8})"
+                        }
+                    }
+            }
+        )
+    })
+</script>
+<!--<script>-->
+<!--jQuery.validator.addMethod("regex", //addMethod第1个参数:方法名称-->
+<!--function (value, element, params) {//addMethod第2个参数:验证方法，-->
+<!--//验证方法参数（被验证元素的值，被验证元素，参数）-->
+<!--var exp = new RegExp(params);//实例化正则对象，参数为用户传入的正则表达式-->
+<!--return exp.test(value);//测试是否匹配-->
+<!--}, "格式错误");-->
+<!--$(function () {-->
+<!--$("#loginned").validate(-->
+<!--{-->
+<!--onkeyup:true,-->
+<!--rules: {-->
+<!--phone: {-->
+<!--required: true,-->
+<!--minlength: 11,-->
+<!--regex: "^1[3|4|5|8][0-9][0-9]{8}$"-->
+<!--},-->
+<!--},-->
+<!--messages:-->
+<!--{-->
+<!--phone:{-->
+<!--required: "请输入手机号",-->
+<!--minlength: "手机号必须为11位",-->
+<!--regex: "请输入正确对的电话号码格式(^1[3|4|5|8][0-9][0-9]{8})"-->
+<!--}-->
+<!--}-->
+<!--}-->
+<!--)-->
+<!--})-->
+<!--</script>-->
+<!--<script>-->
+<!--$(function () {-->
+<!--$("input[name='btn']").click(function () {-->
+<!--$.ajax(-->
+<!--{-->
+<!--url:"/NodeServlet",-->
+<!--type:"post",-->
+<!--data:{"phone":$("input[name='phone']").val()},-->
+<!--dataType:"text",-->
+<!--success:function (result) {-->
+<!--if(result.length>0)-->
+<!--{-->
+<!--layer.msg("欢迎进入蓝桥云课堂",{time:1000})-->
+<!--}-->
+<!--}-->
+<!--}-->
+<!--)-->
+<!--})-->
+<!--})-->
+<!--</script>-->
+<!--<script>-->
+<!--$(function () {-->
+<!--$("input[name='vnode']").click(function () {-->
+<!--$.ajax(-->
+<!--{-->
+<!--url:"/MessageServlet",-->
+<!--type:"post",-->
+<!--data:{"phone":$("input[name='phone']").val()},-->
+<!--dataType:"text",-->
+<!--success:function () {-->
+<!--layer.msg("验证码已发送！",{time:1000});-->
+<!--}-->
+<!--}-->
+<!--)-->
+<!--})-->
+<!--})-->
+<!--</script>-->
+<div id="regedit-bo1">
+    <div id="regedit-title11">
+        <div id="regedit-title111"></div>
+    </div>
+    <div id="regedit_middle11">
+        <ul>
+            <li><img src="images/lqlogo.png" style="width: 50px" height="50"></li>
+            <li><span>手机号登录</span></li>
+        </ul>
+    </div>
+    <div id="regedit-title-right11"></div>
+    <div id="regedit-title-right111">
+        <a href="" name="idea">使用密码验证登录</a>
+    </div>
+    <div id="regedit-body2">
+        <form action="" method="post" id="loginned">
+            <div class="regedit-user">
+                <div class="regedit-user-left">
+                </div>
+                <div class="regedit_input">
+                    <input type="text" placeholder="请输入手机号" style="border: none" name="phone">
+                </div>
+            </div>
+            <div class="regedit_yanzheng">
+                <input type="text" placeholder="请输入短信验证码" style="border: none" name="yanzheng">
+            </div>
+            <div class="regedit_yanzheng1">
+                <input type="button" value="获取验证码" name="vnode">
+            </div>
+            <div id="captcha">
+            </div>
+            <div id="msg"></div>
+            <div id="regedit_btn2"><input type="button" value="登录" name="btn"></div>
+            <div id="regedit-last2" style="top:0px">
+                <ul>
+                    <li><input type="checkbox" checked></li>
+                    <li><p>十天免登录</p></li>
+                    <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>|</span></li>
+                    <li><a href="https://mob.163.com/web/passwdfind">遇到问题？</a></li>
+                </ul>
+            </div>
+            <div id="regedit-last-right2">
+                <span style="color: #49AF4F" name="login">去注册 ></span>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

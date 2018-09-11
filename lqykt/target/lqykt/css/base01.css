@@ -1,0 +1,131 @@
+body,div{
+    padding: 0;
+    margin: 0;
+
+}
+#header{
+    position: relative;
+    width: 100%;
+    height: 60px;
+    color: olivedrab;
+}
+.linear{
+    width: 100%;
+    height: 220px;
+    background-image:linear-gradient(to top left,#bbffbb,#009393);
+}
+.user_info{
+    width: 1205px;
+    margin: 0 auto;
+    padding-top: 29px;
+}
+
+.user_images {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto;
+    border: 4px solid rgba(250, 250, 250, 0.6);
+    border-radius: 50%;
+    overflow: hidden;
+}
+#user-box{
+    position: relative;
+    top: 0px;
+}
+.user_bottom {
+    font-family: MicrosoftYaHei;
+    color: #FFFFFF;
+    text-align: center;
+
+}
+.user_bottom_name{
+    font-size: 20px;
+    margin: 20px 0 10px;
+    margin: 20px 0 6px;
+}
+.user_info_fix a{
+    color: white;
+    text-align: center;
+    text-decoration:none
+}
+.user_info_show {
+    width: 1205px;
+    margin: 88px auto 0;
+    text-align: center;
+}
+.m-setBox  {
+    color: #fff;
+    background-color: #10ae58;
+}
+.m-setBox .boxTab {
+    border-bottom: 1px solid #eaeaea;
+    height: 43px;
+
+}
+.profile-fix {
+    width: 120px;
+    height: 44px;
+    line-height: 44px;
+    display: block;
+    text-align: center;
+    font-family: "微软雅黑";
+    font-size: 15px;
+    float: left;
+    color: #444;
+    font-weight: bold;
+}
+
+element.style {
+}
+.f-bg {
+    _border-top: 1px solid #c7c7ce;
+}
+.bg, .f-bg {
+    /* background-color: #fff; */
+    /* -webkit-box-shadow: 0px 1px 2px #bbb; */
+    -moz-box-shadow: 0px 1px 2px #bbb;
+    box-shadow: 0px 1px 2px #bbb;
+}
+#fucking_setting{
+    position: relative;
+    width: 100%;
+    top: 0px;
+}
+.user-fix{
+    width: 100%;
+    height: 830px;
+}
+.m-infoEdit .editBox {
+    padding: 20px;
+}
+.att{
+    color: red;
+}
+.h1{
+    font-size: 10px;
+    color: black;
+}
+.fuck-userinfo{
+    width: 850px;
+}
+.fuck-userinfo li{
+    font-size: 30px;
+    padding: 10px;
+}
+.ex-fuckimg{
+    position: relative;
+    left: 300px;
+    height: 100px;
+}
+.user_study{
+    width: 1205px;
+    margin: 0 auto;
+    padding-top: 29px;
+    position: relative;
+    top: 10px;
+    left: -500px;
+}
+.fuck-navigation{
+    position: relative;
+    top: 60px;
+}

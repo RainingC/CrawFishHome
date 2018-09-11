@@ -1,0 +1,86 @@
+body{
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+.b-30{
+    width: 1205px;
+    height: 30px;
+}
+.b-20{
+    width: 1205px;
+    height: 20px;
+}
+.b-10{
+    width: 1205px;
+    height: 10px;
+}
+#container{
+    margin: 0 auto;
+    width: 1205px;
+}
+#pay_top{
+    font-size: 20px;
+    color: #333;
+    line-height: 30px;
+}
+.amount_1{
+    font-size: 15px;
+}
+.amount_1 span{
+    font-size: 22px;
+    font-weight: bold;
+    color: #f10215;
+}
+.order_info_2{
+    border: 1px solid #E4E4E4;
+    background: #fff;
+}
+.order_info_21{
+    height: 40px;
+    padding: 10px 20px;
+    background: #F8F8F8;
+    text-align: center;
+}
+.order_info_211{
+    position: relative;
+    left:  -300px;
+}
+.order_info_212{
+    position: relative;
+    left: 100px;
+    top: -17px;
+}
+.order_info_213{
+    position: relative;
+    left: 400px;
+    top: -37px;
+}
+.order_row_1{
+    position: relative;
+    left: 245px;
+    top: 20px;
+}
+.order_row_2{
+    position: relative;
+    left: 675px;
+    top:  0px;
+}
+.order_row_3{
+    position: relative;
+    left: 985px;
+    top:  -20px;
+}
+#payArea{
+    background: #fffcef;
+    border: 1px solid #E4E4E4;
+    padding: 30px 20px;
+}
+#paybutton{
+    margin-top: 20px;
+}
+#paybutton1{
+    position: relative;
+    left: 150px;
+    top: -30px;
+}

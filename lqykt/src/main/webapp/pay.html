@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>云课堂 - 收银台 - 蓝桥云课堂</title>
+    <link rel="stylesheet" href="css/pay.css">
+    <link rel="stylesheet" href="bootstrap-3.3.7/css/bootstrap.css">
+    <link rel="stylesheet" href="layui/css/layui.css" type="text/css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/general.css">
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/regedit.css" type="text/css">
+
+    <script src="js/jquery-3.3.1.js"></script>
+    <!--<script src="js/jquery.min.js"></script>-->
+    <script src="js/cart.js"></script>
+    <script src="bootstrap-3.3.7/js/bootstrap.js" type="application/javascript"></script>
+    <script src="layui/layui.js" type="application/javascript"></script>
+    <script src="js/general.js"></script>
+    <!--<script src="js/layer.js" type="application/javascript"></script>-->
+    <script src="js/jquery.validate.js" type="application/javascript"></script>
+    <script src="js/index1.js" type="application/javascript"></script>
+    <script>
+        $(function () {
+            //获取cookie字符串
+            var strCookie = document.cookie;
+            //将多cookie切割为多个名/值对
+            var arrCookie = strCookie.split("; ");
+            var user_id;
+            var ordercourse_id;
+            var repayid;
+            //遍历cookie数组，处理每个cookie对
+            for (var i = 0; i < arrCookie.length; i++) {
+                var arr = arrCookie[i].split("=");
+                //找到名称为user_id的cookie，并返回它的值
+                if ("user_id" == arr[0]) {
+                    user_id = arr[1];
+                }
+                if ("ordercourse_id" == arr[0]) {
+                    ordercourse_id = arr[1];
+                }
+                if ("repayid" == arr[0]) {
+                    repayid = arr[1];
+                }
+            }
+            var $modelNode = $(".order_row").detach();
+            if (document.referrer == "http://localhost:8080/myOrder.html") {
+                $.ajax({
+                    url: "/ShowOrderInfo",
+                    type: "post",
+                    dataType: "json",
+                    data: {
+                        "course_id": repayid,
+                    },
+                    success: function (ret) {
+                        for (var i = 0; i < ret.length; i++) {
+                            var $cloneNode = $modelNode.clone(true);
+                            $cloneNode.find("span.course_name").text(ret[i].course_name);
+                            $cloneNode.find("span.price").text(ret[i].price);
+                            $(".order_info_22").append($cloneNode);
+                            //arrCourseId[i] = ret[i].course_id;
+                        }
+                        //计算总价
+                        var total = 0;
+                        var $div = $(".order_row_3");
+                        var $price = $(".price");
+                        $div.each(function () {
+                            var i = $div.index($(this));
+                            total += parseFloat($price.eq(i).text());
+                        });
+                        $("#total").text(total);
+                    }
+                })
+
+                //改变订单状态
+                $("#orderbutton").click(function () {
+                        $.ajax({
+                            url: "/ChangeStatus",
+                            type: "post",
+                            dataType: "text",
+                            data: {
+                                "course_id": repayid,
+                                "user_id": user_id,
+                            },
+                            success: function (ret) {
+                            }
+                        })
+
+                    $.ajax({
+                        url: "/insertCollect",
+                        type: "post",
+                        dataType: "text",
+                        data: {
+                            "course_id": repayid,
+                        },
+                        success: function (ret) {
+                        }
+                    })
+                    window.location.href = "gopay.jsp"
+                })
+            }
+            else {
+                var arrCourseId = new Array();
+                var course_id = ordercourse_id.split(",");
+                for (var m = 0; m < course_id.length; m++) {
+                    $.ajax({
+                        url: "/ShowOrderInfo",
+                        type: "post",
+                        dataType: "json",
+                        data: {
+                            "course_id": course_id[m],
+                        },
+                        success: function (ret) {
+
+                            for (var i = 0; i < ret.length; i++) {
+                                var $cloneNode = $modelNode.clone(true);
+                                $cloneNode.find("span.course_name").text(ret[i].course_name);
+                                $cloneNode.find("span.price").text(ret[i].price);
+                                $(".order_info_22").append($cloneNode);
+                                arrCourseId[i] = ret[i].course_id;
+                            }
+                            //计算总价
+                            var total = 0;
+                            var $div = $(".order_row_3");
+                            var $price = $(".price");
+                            $div.each(function () {
+                                var i = $div.index($(this));
+                                total += parseFloat($price.eq(i).text());
+                            });
+                            $("#total").text(total);
+                        }
+                    })
+                }
+                //改变订单状态
+                $("#orderbutton").click(function () {
+                    for (var j = 0; j < course_id.length; j++) {
+                        $.ajax({
+                            url: "/ChangeStatus",
+                            type: "post",
+                            dataType: "text",
+                            data: {
+                                "course_id": course_id[j],
+                                "user_id": user_id,
+                            },
+                            success: function (ret) {
+                            }
+                        })
+                        $.ajax({
+                            url: "/insertCollect",
+                            type: "post",
+                            dataType: "text",
+                            data: {
+                                "course_id": course_id[j],
+                            },
+                            success: function (ret) {
+                            }
+                        })
+                    }
+                    window.location.href = "gopay.jsp"
+                })
+            }
+            showOrder();
+        })
+
+        function showOrder() {
+            $(".order_info_2").hide();
+            $(".order_info_1").click(function () {
+                $(".order_info_2").toggle();
+            })
+        }
+    </script>
+</head>
+<body>
+<div id="header">
+    <div>
+        <div id="logo"><a href="index.html" target="_self"><img src="images/logo.png"></a></div>
+        <div id="header-guide">
+            <a href="allClass.html?name=全部课程&type=0" target="_blank"><div class="header-guide">精选好课</div></a>
+            <a href="allClass.html?name=全部课程&type=0" target="_blank"><div class="header-guide">免费好课</div></a>
+            <a href="" target="_blank"><div class="header-guide">分享网站</div></a>
+        </div>
+        <input type="text" id="header-search" value="搜索课程...">
+        <a href="" target="_blank" id="searchbutton"><img src="images/header-search.png" id="header-icon"></a>
+        <div id="header-options">
+            <a href="myStudy.html" target="_self" id="wdxx">我的学习</a>
+            <i id="news-count">0</i>
+            <a href="news.html" target="_self" id="news">消息</a>
+            <i id="cart-count">0</i>
+            <a href="cart.html" target="_self" id="gwc">购物车</a>
+            <span>|</span>
+            <a href="" id="weidenglu" title="登录/注册">登录/注册</a>
+            <a href="userMain.html" id="yidenglu">..</a>
+            <div id="touxiang"><img src="images/small.jpg"></div>
+        </div>
+        <div id="touxiang-details">
+            <div id="xiaojiantou"></div>
+            <div id="details">
+                <table class="layui-table" lay-skin="line" >
+                    <colgroup>
+                        <col width="150">
+                        <col width="150">
+                        <col width="200">
+                    </colgroup>
+                    <tr>
+                        <td style="display: block;width: 145px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;" title="个性签名">个性签名。。ffffffffffffffffffffff</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <button class="layui-btn layui-btn-primary" onclick="window.location.href='myOrder.html'">我的订单</button>
+                <br><br>
+                <button class="layui-btn layui-btn-danger" id="calcel">注销</button>
+            </div>
+        </div>
+        <div id="header-fenxiang">
+            <a href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=www.baidu.com" target="_blank"><div class="header-fx" id="header-fx1"></div></a>
+            <a href="http://service.weibo.com/share/share.php?url=www.baidu.com" target="_blank"><div class="header-fx" id="header-fx2"></div></a>
+            <a href="https://api.addthis.com/oexchange/0.8/forward/wechat/offer?url=www.baidu.com" target="_blank"><div class="header-fx" id="header-fx3"></div></a>
+        </div>
+        <div id="search-tishi">
+        </div>
+    </div>
+</div>
+<div class="b-30"></div>
+<div class="b-30"></div>
+<div id="right-float">
+    <div class="right-float-div" id="right-float-jqr"></div>
+    <a href="" onclick="return false"><div id="right-jqr"></div></a>
+    <div class="rf-line"></div>
+    <div class="right-float-div"><img src="images/gongzhonghao.png" class="right-icon"></div>
+    <a href="" onclick="return false"><div id="right-gzh"><p>关&nbsp;注<br>我&nbsp;们</p></div></a>
+    <div class="rf-line"></div>
+    <div class="right-float-div"><img src="images/huidaodingbu.png" class="right-icon "></div>
+    <a href="#" id="back_to_top"><div id="right-hddb"><p>回&nbsp;到<br>顶&nbsp;部</p></div></a>
+    <div id="erweima">
+        <img src="images/gongzhonghao.jpg" id="weixin">
+        <span>关注微信</span>
+    </div>
+</div>
+<div id="regedit-body">
+    <div id="regedit-title">
+        <div id="regedit-title1"></div>
+    </div>
+    <div id="regedit_middle">
+        <ul>
+            <li><img src="images/lqlogo.png"style="width: 50px" height="50"></li>
+            <li><span>手机号登录</span></li>
+        </ul>
+    </div>
+    <div id="regedit-title-right"></div>
+    <div id="regedit-title-right1">
+        <span name="ideas">使用短信验证登录</span>
+    </div>
+    <div id="regedit-form">
+        <form action="" method="post" id="regedited">
+            <div class="regedit-user">
+                <div class="regedit-user-left">
+                </div>
+                <div class="regedit_input">
+                    <input type="text" placeholder="请输入手机号" style="border: none" name="phone">
+                </div>
+            </div>
+            <div class="regedit-user1">
+                <div class="regedit-user-left1">
+                </div>
+                <div class="regedit_input">
+                    <input type="password" placeholder="请输入密码" style="border: none" name="pwd">
+                </div>
+            </div>
+            <div id="regedit_btn"><input type="button" value="登录"></div>
+            <div id="regedit-last">
+                <ul>
+                    <li><input type="checkbox" checked></li>
+                    <li><p>十天免登录</p></li>
+                    <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>|</span></li>
+                    <li><a href="https://mob.163.com/web/passwdfind">忘记密码？</a></li>
+                </ul>
+            </div>
+            <div id="regedit-last-right">
+                <span style="color: #49AF4F" name="login">去注册 ></span>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="b-30"></div>
+<div id="container">
+    <div id="pay_top">
+        请在24小时内完成支付 <br>
+        超出24小时再支付可能导致购买失败，需重新下单购买
+    </div>
+    <div class="b-20"></div>
+    <!--订单 模板-->
+    <div class="pay_tmpl">
+        <div class="amount">
+            <div class="amount_1">实付金额：<span>￥<span id="total">0</span>.00</span></div>
+        </div>
+        <div class="b-10"></div>
+        <!--订单详情-->
+        <div class="order_info">
+            <div class="order_info_1"><a href="" onclick="return false;">订单详情&nbsp;<i class="fa fa-angle-down"></i></a>
+            </div>
+            <div class="b-10"></div>
+            <div class="order_info_2">
+                <div class="order_info_21">
+                    <div class="order_info_211">课程名称</div>
+                    <div class="order_info_212">学期或课程有效期</div>
+                    <div class="order_info_213">小计（元）</div>
+                </div>
+                <div class="order_info_22">
+                    <!--课程信息 模板-->
+                    <div class="order_row">
+                        <div class="order_row_1"><span class="course_name">深度解剖dubbo源码</span></div>
+                        <div class="order_row_2">永久有效</div>
+                        <div class="order_row_3"><span class="price">479</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="b-30"></div>
+        <!--支付-->
+        <div id="payArea">
+            <span>支付方式</span><br>
+            <div class="b-10"></div>
+            <img src="images/alipay.png" alt="">
+            <div class="b-20"></div>
+            <div style="height: 1px;width: 1150px;background-color: #eaeaea"></div>
+            <div id="paybutton">
+                <div id="order">
+                    <button type="button" class="btn btn-danger btn-lg" id="orderbutton">去支付</button>
+                </div>
+                <div id="paybutton1"><i class="fa fa-info-circle fa-lg"></i>&nbsp;下单后，请在24小时内完成支付。超出24小时再支付可能导致购买失败，需重新下单购买。
+                </div>
+                <div class="b-10"></div>
+                <input type="checkbox" checked> 我已经阅读并同意 <a href="" style="color: #10ae58;">《云课堂用户付费协议》</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="footer" style="margin-top: 200px">
+    <div id="footer-top">
+        <div class="footer-center">
+            <ul id="hzjg">
+                <li>合作机构</li>
+                <li>蓝桥软件学院</li>
+            </ul>
+        </div>
+    </div>
+    <div id="footer-bottom">
+        <div class="footer-center">
+            <ul>
+                <li>蓝桥云课堂 专注于职场与生活领域的技能提升。</li>
+            </ul>
+            <ul>
+                <li><a href="">关于我们</a></li>
+                <li><a href="">联系我们</a></li>
+                <li><a href="">帮助中心</a></li>
+                <li><a href="">企业培训</a></li>
+                <li><a href="">中国大学MOOC</a></li>
+                <li><a href="">蓝桥卡搭编程</a></li>
+                <li><a href="">蓝桥100分</a></li>
+            </ul>
+            <ul>
+                <li id="copyright">©1997-2018 网易公司 版权所有</li>
+            </ul>
+        </div>
+    </div>
+</div>
+</body>
+</html>

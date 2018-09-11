@@ -1,0 +1,17 @@
+.inputHead{
+    margin-left: 70px;
+    font-size: 16px;
+}
+.deBtnP{
+    width: 18px;
+    height: 18px;
+    position: absolute;
+    left: 1220px;
+    top: 10px;
+    background-image: url("../images/delCourse.png");
+    background-position-y: 152px;
+    background-position-x: -20px;
+}
+.deBtnP:hover{
+    background-position-x: 3px;
+}

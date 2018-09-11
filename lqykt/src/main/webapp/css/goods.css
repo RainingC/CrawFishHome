@@ -1,0 +1,164 @@
+#good{width: 100%;
+    margin: 0 auto;
+    background: #eee;
+}
+
+#introduce1{
+    float: left;
+}
+#introduce2{
+    float: left;
+    margin-left: 30px;
+}
+#introduce3{
+    color:  #666;
+    position: relative;
+    /*left: -295px;*/
+    top: 65px;
+}
+#introduce4{
+    position: relative;
+    /*left: -295px;*/
+    top: 65px;
+    color: #ff3c00;
+    font-size: 30px;
+    font-family: '微软雅黑';
+    line-height: 30px;
+}
+#introduce5{
+    float: left;
+    margin-left: 30px;
+    margin-top: 150px;
+    background: #ff8000;
+    color: white;
+    font-size: 20px;
+    line-height: 45px;
+    width: 160px;
+    height: 45px;
+    text-align: center;
+    vertical-align: middle;
+    display: inline-block;
+}
+#shopping{
+    position: relative;
+    top: 150px;
+}
+#heade2{
+    border-top: 1px solid #dfdfdf;
+
+}
+.photo{
+    width: 950px;
+    /*height: 13000px;*/
+    float: left;
+    background-color: white;
+}
+#photo_text{
+    position: relative;
+    left: 35px;
+}
+#photo img{
+    position:relative;
+    left: 35px;
+}
+
+#evaluate1{
+    width: 265px;
+    height: 50px;
+    float: left;
+    margin-left: 20px;
+    background-color: white;
+    border-top: 1px solid #dfdfdf;
+}
+#evaluate2{
+    width: 265px;
+    height: 100%;
+    float: left;
+    margin-left: 20px;
+}
+#consult2{
+    width: 265px;
+    height: 122px;
+    float: left;
+    margin-left: 20px;
+    margin-top: 15px;
+    background-color: white;
+}
+
+.b-15{height: 15px;
+    width: 265px;
+    float: left;
+    margin-left: 20px;
+}
+.img j-avatar{
+    vertical-align: middle;
+    border-radius: 15px;
+    width: 30px;
+    height: 30px;
+}
+#f-fl\ f-thide\ ks{
+    width: 62px;
+    color: #999;
+    text-align: left;
+    font-size: 14px;
+}
+#f-fl\ f-thide\ ksname{
+    width: 450px;
+    padding-left: 6px;
+    color: #333;
+    height: 36px;
+}
+#section{
+    height: 36px;
+    line-height: 36px;
+    padding: 0 20px;
+    cursor: pointer;
+    -moz-transition: background-color 0.15s ease-out;
+    -webkit-transition: background-color 0.15s ease-out;
+    -o-transition: background-color 0.15s ease-out;
+    transition: background-color 0.15s ease-out;
+}
+.comment_list {
+    padding-top:40px;
+    width:700px;
+    margin:0 auto;
+}
+.comment_details {
+    float:left;
+}
+.comment_content {
+    margin-top:10px;
+    font-size:16px;
+}
+.comment_add_or_last {
+
+    margin:0 auto;
+    clear: both;
+    width:600px;
+    height:40px;
+    background: #F0F0F0;
+    text-align: center;
+    line-height: 40px;   //行高（与div保持同高，垂直居中写法）
+}
+.imgdiv{
+    float:left;
+
+}
+.imgcss {
+    width:50px;
+    height:50px;
+    border-radius: 50%;
+}
+.comment_name {
+    margin-left:10px;
+    color:#3D9EEA;
+    font-size:15px;
+    font-weight: bolder;
+}
+.layui-icon {
+    font-size: 10px;
+    color: grey;
+}
+.del {
+    margin-left: 55px;
+}

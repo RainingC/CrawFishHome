@@ -1,0 +1,228 @@
+#login-body
+{
+    position: relative;
+    width:441px ;
+    height:457px;
+    border: 1px solid #999999;
+    left: -7px;
+    top:-7px;
+}
+#login-title
+{
+    width: 440px;
+    height: 40px;
+    background-color: white;
+}
+#login-title1
+{
+    position: relative;
+    width: 35px;
+    height: 35px;
+    background-image: url("../images/regeditimage/background.png");
+    background-position-y: -80px;
+    background-position-x: -95px;
+    left: 392px;
+    top:4px;
+}
+#login-title2
+{
+    position: relative;
+    width: 360px;
+    height: 50px;
+    background-color: white;
+    left: 40px;
+}
+#login-title2 span
+{
+    position: relative;
+    font-family: 微软雅黑;
+    font-size: 25px;
+    color: black;
+}
+#login-form
+{
+    position: relative;
+    width: 360px;
+    height: 330px;
+    background-color:white;
+    left: 40px;
+    top: 45px;
+}
+.login-users
+{
+    position: relative;
+    width: 360px;
+    height: 44px;
+    border: 1px solid lavender;
+    background-color: white;
+    left: 0px;
+    top:7px;
+}
+.login-user-left
+{
+    position: relative;
+    width: 36px;
+    height: 40px;
+    background: url("../images/regeditimage/phone.png") no-repeat;
+    background-position-y: -68px;
+    left: 10px;
+}
+.login_input
+{
+    position: relative;
+    width: 275px;
+    height: 42px;
+    left:40px;
+    top: -40px;
+}
+.login_input input
+{
+    width:275px ;
+    height:42px ;
+}
+.btn-yanzheng
+{
+    position: relative;
+    width: 358px;
+    height: 35.8px;
+    border-radius: 17.9px;
+    top: 30px;
+    background-color:#a8a8a8;
+}
+/*.btn-yanzheng-small*/
+/*{*/
+    /*left: 0px;*/
+    /*display: block;*/
+    /*cursor: pointer;*/
+    /*position: absolute;*/
+    /*z-index: 2;*/
+    /*pointer-event: none;*/
+/*}*/
+.btn-yanzheng-text
+{
+    height: 39px;
+    left: 100px;
+    top: 8px;
+    position: relative;
+    opacity: 1.04869;
+}
+.login_yanzheng
+{
+    position: relative;
+    width: 232px;
+    height: 45px;
+    border: 1px solid lavender ;
+    background-color: white;
+    left:0px;
+    top:50px;
+}
+.login_yanzheng input
+{
+    width:210px;
+    height: 42px;
+}
+.login_yanzheng1
+{
+    position: relative;
+    width: 100px;
+    height: 45px;
+    font-size: 16px;
+    align-content: center;
+    left: 260px;
+    top:4px;
+}
+.login_yanzheng1 input
+{
+    position: relative;
+    width: 100px;
+    height: 45px;
+    left: 0px;
+    top:0px;
+    background-color: white;
+    border: 1px solid #49AF4F;
+    color: #49AF4F;
+    font-family: 微软雅黑
+}
+.login-user1
+{
+    position: relative;
+    width: 360px;
+    height: 44px;
+    border: 1px solid lavender;
+    background-color: white;
+    left: 0px;
+    top:30px;
+}
+.login-user-left1
+{
+    position: relative;
+    width: 36px;
+    height: 40px;
+    background: url("../images/regeditimage/phone.png") no-repeat;
+    background-position-y: -35px;
+    left: 10px;
+}
+#login_btn
+{
+    position: relative;
+    top: 60px;
+}
+#login_btn input
+{
+    position: relative;
+    background-color: #49AF4F;
+    border: 1px solid #49AF4F;
+    width: 360px;
+    height: 44px;
+    font-family: 微软雅黑;
+    color: white;
+    font-size: 20px;
+    left: 0px;
+    top: 0px;
+}
+#login_list
+{
+    position: relative;
+    width: 200px;
+    height: 40px;
+    top: 45px;
+    left: 40px;
+}
+#login_list span{
+    position: relative;
+    top: 3px;
+    font-size: small;
+    font-family: 宋体;
+    color: #999999;
+}
+#login-last-right
+{
+    position: relative;
+    width: 100px;
+    height: 40px;
+    top: 6px;
+    left: 300px;
+}
+#login-last-right span
+{
+    position: relative;
+    left: 40px;
+    top: 3px;
+    font-family: 宋体;
+    font-size: 14px;
+    color: #49AF4F ;
+}
+#msg {
+    position: relative;
+    width: 100%;
+    top: -10px;
+    /*line-height: 40px;*/
+    font-size: 14px;
+    text-align: center;
+}
+#captcha
+{
+    position: relative;
+    top: 20px;
+    left: 20px;
+}

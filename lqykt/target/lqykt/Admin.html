@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>管理员界面</title>
+    <link href="css/admin.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<script src="js/jquery-3.3.1.js" type="application/javascript"></script>
+<script src="layui/layui.js" type="application/javascript"></script>
+<script src="js/layer.js" type="application/javascript"></script>
+<script>
+    $(function () {
+        $("input[type='button']").click(function () {
+            $.ajax(
+                {
+                    url:"/AdminServlet",
+                    type:"post",
+                    data:{"admin":$("input[name='admin']").val(),"password":$("input[name='password']").val()},
+                    dataType:"json",
+                    success:function (result) {
+                        if(result.length>0)
+                        {
+                            layer.msg("欢迎进入管理员系统",{time:1000});
+                            location.href="/backstag.html";
+                        }else
+                        {
+                            layer.msg("登录失败");
+                        }
+                    }
+                }
+            )
+        })
+    })
+</script>
+<form action="#" method="post" id="adminform">
+    <div id="admin">
+        <span>用户名：</span>
+        <input type="text" name="admin" placeholder="请输入用户名">
+    </div>
+    <div id="password">
+        <span>密码：</span>
+        <input type="password" name="password" placeholder="请输入密码">
+    </div>
+    <div id="btn">
+        <input type="button" value="登录">
+    </div>
+</form>
+</body>
+</html>

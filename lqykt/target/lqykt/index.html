@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>蓝桥云课堂</title>
+    <link rel="stylesheet" href="layui/css/layui.css" type="text/css">
+    <link rel="stylesheet" href="bootstrap-3.3.7/css/bootstrap.css" type="text/css">
+    <link rel="stylesheet" href="css/base.css" type="text/css">
+    <link rel="stylesheet" href="css/general.css" type="text/css">
+    <link rel="stylesheet" href="css/index.css" type="text/css" media="all">
+    <link rel="stylesheet" href="css/regedit.css" type="text/css">
+</head>
+<body>
+    <script src="js/jquery-3.3.1.js" type="application/javascript"></script>
+    <script src="bootstrap-3.3.7/js/bootstrap.js" type="application/javascript"></script>
+    <script src="layui/layui.js" type="application/javascript"></script>
+    <script src="js/general.js" type="application/javascript"></script>
+    <script src="js/index.js" type="application/javascript"></script>
+    <script src="js/jquery.validate.js" type="application/javascript"></script>
+    <script src="js/index1.js" type="application/javascript"></script>
+    <div id="header">
+        <div>
+            <div id="logo"><a href="index.html" target="_self"><img src="images/logo.png"></a></div>
+            <div id="header-guide">
+                <a href="allClass.html?name=全部课程&type=0" target="_blank"><div class="header-guide">精选好课</div></a>
+                <a href="allClass.html?name=全部课程&type=0" target="_blank"><div class="header-guide">免费好课</div></a>
+                <a href="" target="_blank"><div class="header-guide">分享网站</div></a>
+            </div>
+            <input type="text" id="header-search" value="搜索课程...">
+            <a href="" target="_blank" id="searchbutton"><img src="images/header-search.png" id="header-icon"></a>
+            <div id="header-options">
+                <a href="myStudy.html" target="_self" id="wdxx">我的学习</a>
+                <i id="news-count">0</i>
+                <a href="news.html" target="_self" id="news">消息</a>
+                <i id="cart-count">0</i>
+                <a href="cart.html" target="_self" id="gwc">购物车</a>
+                <span>|</span>
+                <a href="" id="weidenglu" title="登录/注册">登录/注册</a>
+                <a href="userMain.html" id="yidenglu">..</a>
+                <div id="touxiang"><img src="images/small.jpg"></div>
+            </div>
+            <div id="touxiang-details">
+                <div id="xiaojiantou"></div>
+                <div id="details">
+                    <table class="layui-table" lay-skin="line" >
+                        <colgroup>
+                            <col width="150">
+                            <col width="150">
+                            <col width="200">
+                        </colgroup>
+                        <tr>
+                            <td style="display: block;width: 145px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;" title="个性签名">个性签名。。ffffffffffffffffffffff</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <button class="layui-btn layui-btn-primary" onclick="window.location.href='myOrder.html'">我的订单</button>
+                    <br><br>
+                    <button class="layui-btn layui-btn-danger" id="calcel">注销</button>
+                </div>
+            </div>
+            <div id="header-fenxiang">
+                <a href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=www.baidu.com" target="_blank"><div class="header-fx" id="header-fx1"></div></a>
+                <a href="http://service.weibo.com/share/share.php?url=www.baidu.com" target="_blank"><div class="header-fx" id="header-fx2"></div></a>
+                <a href="https://api.addthis.com/oexchange/0.8/forward/wechat/offer?url=www.baidu.com" target="_blank"><div class="header-fx" id="header-fx3"></div></a>
+            </div>
+            <div id="search-tishi">
+            </div>
+        </div>
+    </div>
+    <div id="regedit-body">
+        <div id="regedit-title">
+            <div id="regedit-title1"></div>
+        </div>
+        <div id="regedit_middle">
+            <ul>
+                <li><img src="images/lqlogo.png"style="width: 50px" height="50"></li>
+                <li><span>手机号登录</span></li>
+            </ul>
+        </div>
+        <div id="regedit-title-right"></div>
+        <div id="regedit-title-right1">
+            <span name="ideas">使用短信验证登录</span>
+        </div>
+        <div id="regedit-form">
+            <form action="" method="post" id="regedited">
+                <div class="regedit-user">
+                    <div class="regedit-user-left">
+                    </div>
+                    <div class="regedit_input">
+                        <input type="text" placeholder="请输入手机号" style="border: none" name="phone">
+                    </div>
+                </div>
+                <div class="regedit-user1">
+                    <div class="regedit-user-left1">
+                    </div>
+                    <div class="regedit_input">
+                        <input type="password" placeholder="请输入密码" style="border: none" name="pwd">
+                    </div>
+                </div>
+                <div id="regedit_btn"><input type="button" value="登录"></div>
+                <div id="regedit-last">
+                    <ul>
+                        <li><input type="checkbox" checked></li>
+                        <li><p>十天免登录</p></li>
+                        <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>|</span></li>
+                        <li><a href="https://mob.163.com/web/passwdfind">忘记密码？</a></li>
+                    </ul>
+                </div>
+                <div id="regedit-last-right">
+                    <span style="color: #49AF4F" name="login">去注册 ></span>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div id="ding"></div>
+    <div id="body">
+        <div id="body-center">
+            <div id="gallery">
+                <div id="gallery-top">
+                    <a href="allClass.html?name=全部课程&type=0" target="_blank"><div id="kcfl">全部课程</div></a>
+                    <div id="gundongtiao">
+                        <div class="layui-carousel" id="test2">
+                            <div carousel-item>
+                                <div style="background-color: rgba(18,21,44,0.85);color: white">欢迎来到蓝桥云课堂</div>
+                                <div style="background-color: rgba(18,21,44,0.85);color: white">希望您学习进步，工作顺利！</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="menu">
+                    <div>
+                        <div class="menu">
+                            <div class="menu-details"><a href="specificClass.html?name=办公效率&type=1" target="_blank">办公效率</a></div>
+                        </div>
+                        <div class="menu">
+                            <div class="menu-details"><a href="specificClass.html?name=职场发展&type=1" target="_blank">职场发展</a></div>
+                        </div>
+                        <div class="menu">
+                            <div class="menu-details"><a href="specificClass.html?name=职业岗位&type=1" target="_blank">职业岗位</a></div>
+                        </div>
+                        <div class="menu">
+                            <div class="menu-details"><a href="specificClass.html?name=人工智能&type=1" target="_blank">人工智能</a></div>
+                        </div>
+                        <div class="menu">
+                            <div class="menu-details"><a href="specificClass.html?name=IT&互联网&type=1" target="_blank">IT&互联网</a></div>
+                        </div>
+                        <div class="menu">
+                            <div class="menu-details"><a href="specificClass.html?name=语言留学&type=1" target="_blank">语言留学</a></div>
+                        </div>
+                        <div class="menu">
+                            <div class="menu-details" style="border: none"><a href="specificClass.html?name=职场之外&type=1" target="_blank">职场之外</a></div>
+                        </div>
+                    </div>
+                </div>
+                <div id="lunbo">
+                    <div class="layui-carousel" id="test1" lay-filter="test1" style="z-index: -1;">
+                        <div carousel-item>
+                            <div><img src="images/1.png"></div>
+                            <div><img src="images/2.png"></div>
+                            <div><img src="images/3.png"></div>
+                            <div><img src="images/4.png"></div>
+                            <div><img src="images/5.png"></div>
+                        </div>
+                    </div>
+                </div>
+                <div id="menuhidden1" class="menuhidden">
+                    <div class="menu-fenlei"><a href="specificClass.html?name=办公效率&type=2&name2=办公软件" target="_blank">办公软件</a><li>|</li>
+                        <span><a href="specificClass.html?name3=PPT&type=3&name=办公效率&name2=办公软件" target="_blank">PPT</a></span><li>|</li>
+                        <span><a href="specificClass.html?name3=Excel&type=3&name=办公效率&name2=办公软件" target="_blank">Excel</a></span><li>|</li>
+                        <span><a href="specificClass.html?name3=Word&type=3&name=办公效率&name2=办公软件" target="_blank">Word</a></span><li>|</li>
+                        <span><a href="specificClass.html?name3=Project&type=3&name=办公效率&name2=办公软件" target="_blank">Project</a></span>
+                    </div>
+                    <div class="menu-fenlei"><a href="specificClass.html?name=办公效率&type=2&name2=工作效率" target="_blank">工作效率</a><li>|</li>
+                        <span><a href="specificClass.html?name3=思维导图&type=3&name=办公效率&name2=工作效率" target="_blank">思维导图</a></span><li>|</li>
+                        <span><a href="specificClass.html?name3=时间管理&type=3&name=办公效率&name2=工作效率" target="_blank">时间管理</a></span><li>|</li>
+                        <span><a href="specificClass.html?name3=Omni系列&type=3&name=办公效率&name2=工作效率" target="_blank">Omni系列</a></span>
+                    </div>
+                    <div class="menu-fenlei"><a href="specificClass.html?name=办公效率&type=2&name2=电脑基础" target="_blank">电脑基础</a><li>|</li>
+                        <span><a href="specificClass.html?name3=基础操作&type=3&name=办公效率&name2=电脑基础" target="_blank">基础操作</a></span><li>|</li>
+                        <span><a href="specificClass.html?name3=微课制作&type=3&name=办公效率&name2=电脑基础" target="_blank">微课制作</a></span><li>|</li>
+                        <span><a href="specificClass.html?name3=常用工具&type=3&name=办公效率&name2=电脑基础" target="_blank">常用工具</a></span>
+                    </div>
+                    <div class="menu-fenlei"><a href="specificClass.html?name=办公效率&type=2&name2=考试认证" target="_blank">考试认证</a><li>|</li>
+                        <span><a href="specificClass.html?name3=计算机二级Office&type=3&name=办公效率&name2=考试认证" target="_blank">计算机二级Office</a></span><li>|</li>
+                        <span><a href="specificClass.html?name3=微软MOS认证&type=3&name=办公效率&name2=考试认证" target="_blank">微软MOS认证</a></span>
+                    </div>
+                </div>
+                <div id="menuhidden2" class="menuhidden">
+                    <div class="menu-fenlei"><a href="">个人提升</a><li>|</li>
+                        <span><a href="">礼仪形象</a></span><li>|</li>
+                        <span><a href="">演讲能力</a></span><li>|</li>
+                        <span><a href="">个人品牌</a></span><li>|</li>
+                        <span><a href="">目标管理</a></span>
+                    </div>
+                    <div class="menu-fenlei"><a href="">职场能力</a><li>|</li>
+                        <span><a href="">职场经验</a></span><li>|</li>
+                        <span><a href="">人际沟通</a></span><li>|</li>
+                        <span><a href="">团队协作</a></span><li>|</li>
+                        <span><a href="">商务谈判</a></span>
+                    </div>
+                    <div class="menu-fenlei"><a href="">求职应聘</a><li>|</li>
+                        <span><a href="">职业规划</a></span><li>|</li>
+                        <span><a href="">简历制作</a></span><li>|</li>
+                        <span><a href="">面试技巧</a></span><li>|</li>
+                        <span><a href="">笔试技巧</a></span>
+                    </div>
+                    <div class="menu-fenlei"><a href="">商学院</a><li>|</li>
+                        <span><a href="">商业思维</a></span><li>|</li>
+                        <span><a href="">商业通识</a></span><li>|</li>
+                        <span><a href="">商业工具</a></span><li>|</li>
+                        <span><a href="">商业案例</a></span>
+                    </div>
+                </div>
+                <div id="menuhidden3" class="menuhidden">
+                    <div class="menu-fenlei"><a href="">设计软件</a><li>|</li>
+                        <span><a href="">Photoshop</a></span><li>|</li>
+                        <span><a href="">Illustrator</a></span><li>|</li>
+                        <span><a href="">After&nbsp;Effects</a></span><li>|</li>
+                        <span><a href="">Sketch</a></span>
+                    </div>
+                    <div class="menu-fenlei"><a href="">平面设计</a><li>|</li>
+                        <span><a href="">广告海报设计</a></span><li>|</li>
+                        <span><a href="">字体设计</a></span><li>|</li>
+                        <span><a href="">商业插画</a></span><li>|</li>
+                        <span><a href="">设计思维与方法</a></span>
+                    </div>
+                    <div class="menu-fenlei"><a href="">其他设计</a><li>|</li>
+                        <span><a href="">影视动画&游戏</a></span><li>|</li>
+                        <span><a href="">工业设计</a></span><li>|</li>
+                        <span><a href="">建筑家装设计</a></span>
+                    </div>
+                    <div class="menu-fenlei"><a href="">市场营销</a><li>|</li>
+                        <span><a href="">网络营销</a></span><li>|</li>
+                        <span><a href="">市场营销</a></span><li>|</li>
+                        <span><a href="">电子商务</a></span><li>|</li>
+                        <span><a href="">品牌推广</a></span>
+                    </div>
+                    <div class="menu-fenlei"><a href="">人力资源管理</a><li>|</li>
+                        <span><a href="">员工关系</a></span><li>|</li>
+                        <span><a href="">招聘管理</a></span><li>|</li>
+                        <span><a href="">薪酬管理</a></span><li>|</li>
+                        <span><a href="">培训管理</a></span>
+                    </div>
+                </div>
+                <div id="menuhidden4" class="menuhidden">
+                    <div class="menu-fenlei"><a href="">数据科学</a><li>|</li>
+                        <span><a href="">数据分析</a></span><li>|</li>
+                        <span><a href="">大数据</a></span><li>|</li>
+                        <span><a href="">数据库</a></span>
+                    </div>
+                    <div class="menu-fenlei"><a href="">人工智能</a><li>|</li>
+                        <span><a href="">机器学习</a></span><li>|</li>
+                        <span><a href="">深度学习</a></span><li>|</li>
+                        <span><a href="">编程基础</a></span>
+                    </div>
+                    <div class="menu-fenlei"><a href="">区块链</a><li>|</li>
+                        <span><a href="">DAPP智能合约开发</a></span><li>|</li>
+                        <span><a href="">比特币</a></span>
+                    </div>
+                    <div class="menu-fenlei"><a href="">智能设备和物联网</a><li>|</li>
+                    </div>
+                </div>
+                <div id="menuhidden5" class="menuhidden">
+                    <div class="menu-fenlei"><a href="">编程语言</a><li>|</li>
+                        <span><a href="">Python</a></span><li>|</li>
+                        <span><a href="">PHP</a></span><li>|</li>
+                        <span><a href="">Java</a></span><li>|</li>
+                        <span><a href="">C++</a></span><li>|</li>
+                        <span><a href="">C</a></span>
+                    </div>
+                    <div class="menu-fenlei"><a href="">前端开发</a><li>|</li>
+                        <span><a href="">开发语言</a></span><li>|</li>
+                        <span><a href="">前端框架</a></span><li>|</li>
+                        <span><a href="">开发实践</a></span>
+                    </div>
+                    <div class="menu-fenlei"><a href="">后端开发</a><li>|</li>
+                        <span><a href="">Java&nbsp;Web</a></span><li>|</li>
+                        <span><a href="">Python</a></span><li>|</li>
+                        <span><a href="">PHP&nbsp;Web</a></span><li>|</li>
+                        <span><a href="">.NET</a></span>
+                    </div>
+                    <div class="menu-fenlei"><a href="">移动开发</a><li>|</li>
+                        <span><a href="">微信开发</a></span><li>|</li>
+                        <span><a href="">iOS</a></span><li>|</li>
+                        <span><a href="">React&nbsp;Native</a></span><li>|</li>
+                        <span><a href="">Android</a></span><li>|</li>
+                        <span><a href="">Unity3D</a></span>
+                    </div>
+                    <div class="menu-fenlei"><a href="">网络与运维</a><li>|</li>
+                        <span><a href="">软件工程与方法</a></span><li>|</li>
+                        <span><a href="">网络与通讯</a></span><li>|</li>
+                        <span><a href="">信息安全</a></span><li>|</li>
+                        <span><a href="">测试运维</a></span>
+                    </div>
+                </div>
+                <div id="menuhidden6" class="menuhidden">
+                    <div class="menu-fenlei"><a href="">英语口语</a><li>|</li>
+                        <span><a href="">职场口语</a></span><li>|</li>
+                        <span><a href="">生活口语</a></span><li>|</li>
+                        <span><a href="">零基础入门</a></span><li>|</li>
+                        <span><a href="">英式发音</a></span><li>|</li>
+                        <span><a href="">美式发音</a></span>
+                    </div>
+                    <div class="menu-fenlei"><a href="">新概念英语</a><li>|</li>
+                        <span><a href="">新概念</a></span>
+                    </div>
+                    <div class="menu-fenlei"><a href="">零基础</a><li>|</li>
+                        <span><a href="">英语单词</a></span>
+                    </div>
+                    <div class="menu-fenlei"><a href="">少儿英语</a><li>|</li>
+                        <span><a href="">零基础入门</a></span><li>|</li>
+                        <span><a href="">自然拼读</a></span><li>|</li>
+                        <span><a href="">音标</a></span><li>|</li>
+                        <span><a href="">原版绘本</a></span><li>|</li>
+                        <span><a href="">美式发音</a></span><li>|</li>
+                        <span><a href="">英式发音</a></span>
+                    </div>
+                    <div class="menu-fenlei"><a href="">英语考试</a><li>|</li>
+                        <span><a href="">四六级</a></span><li>|</li>
+                        <span><a href="">考研英语</a></span><li>|</li>
+                        <span><a href="">BEC商务英语</a></span><li>|</li>
+                        <span><a href="">大学英语</a></span>
+                    </div>
+                </div>
+                <div id="menuhidden7" class="menuhidden">
+                    <div class="menu-fenlei"><a href="">摄影影视</a><li>|</li>
+                        <span><a href="">摄影基础</a></span><li>|</li>
+                        <span><a href="">手机摄影</a></span><li>|</li>
+                        <span><a href="">摄影后期</a></span><li>|</li>
+                        <span><a href="">影视基础</a></span><li>|</li>
+                        <span><a href="">影视后期</a></span>
+                    </div>
+                    <div class="menu-fenlei"><a href="">音乐乐器</a><li>|</li>
+                        <span><a href="">乐理基础</a></span><li>|</li>
+                        <span><a href="">声乐歌唱</a></span><li>|</li>
+                        <span><a href="">编曲创作</a></span><li>|</li>
+                        <span><a href="">中国乐器</a></span>
+                    </div>
+                    <div class="menu-fenlei"><a href="">运动健康</a><li>|</li>
+                        <span><a href="">体育运动</a></span><li>|</li>
+                        <span><a href="">医疗养生</a></span><li>|</li>
+                        <span><a href="">两性健康</a></span><li>|</li>
+                        <span><a href="">健身</a></span><li>|</li>
+                        <span><a href="">舞蹈</a></span><li>|</li>
+                        <span><a href="">瑜伽</a></span>
+                    </div>
+                    <div class="menu-fenlei"><a href="">兴趣修养</a><li>|</li>
+                        <span><a href="">绘画</a></span><li>|</li>
+                        <span><a href="">书法</a></span><li>|</li>
+                        <span><a href="">手工DIY</a></span><li>|</li>
+                        <span><a href="">科普</a></span><li>|</li>
+                        <span><a href="">人文</a></span>
+                    </div>
+                    <div class="menu-fenlei"><a href="">居家生活</a><li>|</li>
+                        <span><a href="">美食与健康</a></span><li>|</li>
+                        <span><a href="">家居装饰</a></span><li>|</li>
+                        <span><a href="">生活妙招</a></span>
+                    </div>
+                </div>
+            </div>
+            <div id="body-show">
+                <div class="body-show">
+                    <div class="body-show-intro">精选好课</div>
+                    <div class="body-show-details">
+                        <a href="">
+                            <div class="body-showinfo-jxhk">
+                                <div class="jxhk-img"><img src="images/kk.png" style="width: 225px;height: 125px"></div>
+                                <p>教你玩转pr教程</p>
+                                <span>oeasy教excelwordppt和ps</span>
+                                <div class="xingji">
+                                    <div class="xingxing">
+                                        <s class="xiaoxingxing"></s>
+                                        <s class="xiaoxingxing"></s>
+                                        <s class="xiaoxingxing"></s>
+                                        <s class="xiaoxingxing"></s>
+                                        <s class="xiaoxingxing"></s>
+                                    </div>
+                                    <li>5</li>
+                                </div>
+                                <ul>
+                                    <li>666</li>
+                                    <li>人学过</li>
+                                </ul>
+                            </div>
+                        </a>
+                        <a href="">
+                            <div class="body-showinfo-jxhk">
+                                <div class="jxhk-img"><img src="images/kk.png"style="width: 225px;height: 125px"></div>
+                                <p>教你玩转pr教程</p>
+                                <span>oeasy教excelwordppt和ps</span>
+                                <div class="xingji">
+                                    <div class="xingxing">
+                                        <s class="xiaoxingxing"></s>
+                                        <s class="xiaoxingxing"></s>
+                                        <s class="xiaoxingxing"></s>
+                                        <s class="xiaoxingxing"></s>
+                                        <s class="xiaoxingxing"></s>
+                                    </div>
+                                    <li>5</li>
+                                </div>
+                                <ul>
+                                    <li>666</li>
+                                    <li>人学过</li>
+                                </ul>
+                            </div>
+                        </a>
+                        <a href="">
+                            <div class="body-showinfo-jxhk">
+                                <div class="jxhk-img"><img src="images/kk.png"></div>
+                                <p>教你玩转pr教程</p>
+                                <span>oeasy教excelwordppt和ps</span>
+                                <div class="xingji">
+                                    <div class="xingxing">
+                                        <s class="xiaoxingxing"></s>
+                                        <s class="xiaoxingxing"></s>
+                                        <s class="xiaoxingxing"></s>
+                                        <s class="xiaoxingxing"></s>
+                                        <s class="xiaoxingxing"></s>
+                                    </div>
+                                    <li>5</li>
+                                </div>
+                                <ul>
+                                    <li>666</li>
+                                    <li>人学过</li>
+                                </ul>
+                            </div>
+                        </a>
+                        <a href="">
+                            <div class="body-showinfo-jxhk">
+                                <div class="jxhk-img"><img src="images/kk.png"></div>
+                                <p>教你玩转pr教程</p>
+                                <span>oeasy教excelwordppt和ps</span>
+                                <div class="xingji">
+                                    <div class="xingxing">
+                                        <s class="xiaoxingxing"></s>
+                                        <s class="xiaoxingxing"></s>
+                                        <s class="xiaoxingxing"></s>
+                                        <s class="xiaoxingxing"></s>
+                                        <s class="xiaoxingxing"></s>
+                                    </div>
+                                    <li>5</li>
+                                </div>
+                                <ul>
+                                    <li>666</li>
+                                    <li>人学过</li>
+                                </ul>
+                            </div>
+                        </a>
+                        <a href="">
+                            <div class="body-showinfo-jxhk">
+                                <div class="jxhk-img"><img src="images/kk.png"></div>
+                                <p>教你玩转pr教程</p>
+                                <span>oeasy教excelwordppt和ps</span>
+                                <div class="xingji">
+                                    <div class="xingxing">
+                                        <s class="xiaoxingxing"></s>
+                                        <s class="xiaoxingxing"></s>
+                                        <s class="xiaoxingxing"></s>
+                                        <s class="xiaoxingxing"></s>
+                                        <s class="xiaoxingxing"></s>
+                                    </div>
+                                    <li>5</li>
+                                </div>
+                                <ul>
+                                    <li>666</li>
+                                    <li>人学过</li>
+                                </ul>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="body-show">
+                    <div class="body-show-intro">最新课程</div>
+                    <div class="body-show-details">
+                        <a href="">
+                            <div class="body-showinfo-zxkc">
+                                <div class="jxhk-img"><img src="images/kk.png" style="width: 225px;height: 125px"></div>
+                                <p>教你玩转pr教程</p>
+                                <span>oeasy教excelwordppt和ps</span>
+                                <div class="xingji">
+                                    <div class="xingxing">
+                                        <s class="xiaoxingxing"></s>
+                                        <s class="xiaoxingxing"></s>
+                                        <s class="xiaoxingxing"></s>
+                                        <s class="xiaoxingxing"></s>
+                                        <s class="xiaoxingxing"></s>
+                                    </div>
+                                    <li>5</li>
+                                </div>
+                                <ul>
+                                    <li>666</li>
+                                    <li>人学过</li>
+                                </ul>
+                            </div>
+                        </a>
+                        <a href="">
+                            <div class="body-showinfo-zxkc">
+                                <div class="jxhk-img"><img src="images/kk.png"></div>
+                                <p>教你玩转pr教程</p>
+                                <span>oeasy教excelwordppt和ps</span>
+                                <div class="xingji">
+                                    <div class="xingxing">
+                                        <s class="xiaoxingxing"></s>
+                                        <s class="xiaoxingxing"></s>
+                                        <s class="xiaoxingxing"></s>
+                                        <s class="xiaoxingxing"></s>
+                                        <s class="xiaoxingxing"></s>
+                                    </div>
+                                    <li>5</li>
+                                </div>
+                                <ul>
+                                    <li>666</li>
+                                    <li>人学过</li>
+                                </ul>
+                            </div>
+                        </a>
+                        <a href="">
+                            <div class="body-showinfo-zxkc">
+                                <div class="jxhk-img"><img src="images/kk.png"></div>
+                                <p>教你玩转pr教程</p>
+                                <span>oeasy教excelwordppt和ps</span>
+                                <div class="xingji">
+                                    <div class="xingxing">
+                                        <s class="xiaoxingxing"></s>
+                                        <s class="xiaoxingxing"></s>
+                                        <s class="xiaoxingxing"></s>
+                                        <s class="xiaoxingxing"></s>
+                                        <s class="xiaoxingxing"></s>
+                                    </div>
+                                    <li>5</li>
+                                </div>
+                                <ul>
+                                    <li>666</li>
+                                    <li>人学过</li>
+                                </ul>
+                            </div>
+                        </a>
+                        <a href="">
+                            <div class="body-showinfo-zxkc">
+                                <div class="jxhk-img"><img src="images/kk.png"></div>
+                                <p>教你玩转pr教程</p>
+                                <span>oeasy教excelwordppt和ps</span>
+                                <div class="xingji">
+                                    <div class="xingxing">
+                                        <s class="xiaoxingxing"></s>
+                                        <s class="xiaoxingxing"></s>
+                                        <s class="xiaoxingxing"></s>
+                                        <s class="xiaoxingxing"></s>
+                                        <s class="xiaoxingxing"></s>
+                                    </div>
+                                    <li>5</li>
+                                </div>
+                                <ul>
+                                    <li>666</li>
+                                    <li>人学过</li>
+                                </ul>
+                            </div>
+                        </a>
+                        <a href="">
+                            <div class="body-showinfo-zxkc">
+                                <div class="jxhk-img"><img src="images/kk.png"></div>
+                                <p>教你玩转pr教程</p>
+                                <span>oeasy教excelwordppt和ps</span>
+                                <div class="xingji">
+                                    <div class="xingxing">
+                                        <s class="xiaoxingxing"></s>
+                                        <s class="xiaoxingxing"></s>
+                                        <s class="xiaoxingxing"></s>
+                                        <s class="xiaoxingxing"></s>
+                                        <s class="xiaoxingxing"></s>
+                                    </div>
+                                    <li>5</li>
+                                </div>
+                                <ul>
+                                    <li>666</li>
+                                    <li>人学过</li>
+                                </ul>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="body-show">
+                    <div class="body-show-intro">免费课程</div>
+                    <div class="body-show-details">
+                        <a href="">
+                            <div class="body-showinfo-mfkc">
+                                <div class="jxhk-img"><img src="images/kk.png" style="width: 225px;height: 125px"></div>
+                                <p>教你玩转pr教程</p>
+                                <span>oeasy教excelwordppt和ps</span>
+                                <div class="xingji">
+                                    <div class="xingxing">
+                                        <s class="xiaoxingxing"></s>
+                                        <s class="xiaoxingxing"></s>
+                                        <s class="xiaoxingxing"></s>
+                                        <s class="xiaoxingxing"></s>
+                                        <s class="xiaoxingxing"></s>
+                                    </div>
+                                    <li>5</li>
+                                </div>
+                                <ul>
+                                    <li>666</li>
+                                    <li>人学过</li>
+                                </ul>
+                            </div>
+                        </a>
+                        <a href="">
+                            <div class="body-showinfo-mfkc">
+                                <div class="jxhk-img"><img src="images/kk.png"></div>
+                                <p>教你玩转pr教程</p>
+                                <span>oeasy教excelwordppt和ps</span>
+                                <div class="xingji">
+                                    <div class="xingxing">
+                                        <s class="xiaoxingxing"></s>
+                                        <s class="xiaoxingxing"></s>
+                                        <s class="xiaoxingxing"></s>
+                                        <s class="xiaoxingxing"></s>
+                                        <s class="xiaoxingxing"></s>
+                                    </div>
+                                    <li>5</li>
+                                </div>
+                                <ul>
+                                    <li>666</li>
+                                    <li>人学过</li>
+                                </ul>
+                            </div>
+                        </a>
+                        <a href="">
+                            <div class="body-showinfo-mfkc">
+                                <div class="jxhk-img"><img src="images/kk.png"></div>
+                                <p>教你玩转pr教程</p>
+                                <span>oeasy教excelwordppt和ps</span>
+                                <div class="xingji">
+                                    <div class="xingxing">
+                                        <s class="xiaoxingxing"></s>
+                                        <s class="xiaoxingxing"></s>
+                                        <s class="xiaoxingxing"></s>
+                                        <s class="xiaoxingxing"></s>
+                                        <s class="xiaoxingxing"></s>
+                                    </div>
+                                    <li>5</li>
+                                </div>
+                                <ul>
+                                    <li>666</li>
+                                    <li>人学过</li>
+                                </ul>
+                            </div>
+                        </a>
+                        <a href="">
+                            <div class="body-showinfo-mfkc">
+                                <div class="jxhk-img"><img src="images/kk.png"></div>
+                                <p>教你玩转pr教程</p>
+                                <span>oeasy教excelwordppt和ps</span>
+                                <div class="xingji">
+                                    <div class="xingxing">
+                                        <s class="xiaoxingxing"></s>
+                                        <s class="xiaoxingxing"></s>
+                                        <s class="xiaoxingxing"></s>
+                                        <s class="xiaoxingxing"></s>
+                                        <s class="xiaoxingxing"></s>
+                                    </div>
+                                    <li>5</li>
+                                </div>
+                                <ul>
+                                    <li>666</li>
+                                    <li>人学过</li>
+                                </ul>
+                            </div>
+                        </a>
+                        <a href="">
+                            <div class="body-showinfo-mfkc">
+                                <div class="jxhk-img"><img src="images/kk.png"></div>
+                                <p>教你玩转pr教程</p>
+                                <span>oeasy教excelwordppt和ps</span>
+                                <div class="xingji">
+                                    <div class="xingxing">
+                                        <s class="xiaoxingxing"></s>
+                                        <s class="xiaoxingxing"></s>
+                                        <s class="xiaoxingxing"></s>
+                                        <s class="xiaoxingxing"></s>
+                                        <s class="xiaoxingxing"></s>
+                                    </div>
+                                    <li>5</li>
+                                </div>
+                                <ul>
+                                    <li>666</li>
+                                    <li>人学过</li>
+                                </ul>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="right-float">
+    <div class="right-float-div" id="right-float-jqr"></div>
+    <a href="" onclick="return false"><div id="right-jqr"></div></a>
+    <div class="rf-line"></div>
+    <div class="right-float-div"><img src="images/gongzhonghao.png" class="right-icon"></div>
+    <a href="" onclick="return false"><div id="right-gzh"><p>关&nbsp;注<br>我&nbsp;们</p></div></a>
+    <div class="rf-line"></div>
+    <div class="right-float-div"><img src="images/huidaodingbu.png" class="right-icon "></div>
+    <a href="#" id="back_to_top"><div id="right-hddb"><p>回&nbsp;到<br>顶&nbsp;部</p></div></a>
+    <div id="erweima">
+        <img src="images/gongzhonghao.jpg" id="weixin">
+        <span>关注微信</span>
+    </div>
+</div>
+    <div id="footer">
+        <div id="footer-top">
+            <div class="footer-center">
+                <ul id="hzjg">
+                    <li>合作机构</li>
+                    <li>蓝桥软件学院</li>
+                </ul>
+            </div>
+        </div>
+        <div id="footer-bottom">
+            <div class="footer-center">
+                <ul>
+                    <li>蓝桥云课堂 专注于职场与生活领域的技能提升。</li>
+                </ul>
+                <ul>
+                    <li><a href="">关于我们</a></li>
+                    <li><a href="">联系我们</a></li>
+                    <li><a href="">帮助中心</a></li>
+                    <li><a href="">企业培训</a></li>
+                    <li><a href="">中国大学MOOC</a></li>
+                    <li><a href="">蓝桥卡搭编程</a></li>
+                    <li><a href="">蓝桥100分</a></li>
+                </ul>
+                <ul>
+                    <li id="copyright">©1997-2018 网易公司 版权所有</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

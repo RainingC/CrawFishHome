@@ -1,0 +1,359 @@
+#regedit-body
+{
+    position: relative;
+    width:441px ;
+    height:457px;
+    border: 1px solid #999999;
+}
+#regedit-title
+{
+    width: 440px;
+    height: 40px;
+    background-color: white;
+}
+#regedit-title1
+{
+    position: relative;
+    width: 35px;
+    height: 35px;
+    background-image: url("../images/regeditimage/background.png");
+    background-position-y: -80px;
+    background-position-x: -95px;
+    left: 392px;
+    top:4px;
+}
+#regedit_middle
+{
+    position: relative;
+    width: 360px;
+    height: 50px;
+    background-color: white;
+    left: 40px;
+}
+#regedit_middle ul li
+{
+    float: left;
+    margin-left: 50px;
+    margin-top: -1px;
+}
+#regedit_middle span
+{
+    font-family: 微软雅黑;
+    font-size: 25px;
+    color: black;
+
+}
+#regedit-title-right
+{
+    position: relative;
+    width: 20px;
+    height: 16px;
+    background: url("../images/regeditimage/backgrpund1.PNG") no-repeat;
+    background-position-x: -45px;
+    background-position-y: -18px;
+    color: white;
+    left: 260px;
+}
+#regedit-title-right1
+{
+    position: relative;
+    width: 115px;
+    height: 20px;
+    left: 285px;
+    top: -18px;
+}
+#regedit-title-right1 a
+{
+    color: #666666;
+    font-size: 12px;
+    font-family: 宋体;
+}
+#regedit-form
+{
+    position: relative;
+    width: 360px;
+    height: 240px;
+    background-color:white;
+    left: 40px;
+}
+.regedit-user
+{
+    position: relative;
+    width: 360px;
+    height: 44px;
+    border: 1px solid lavender;
+    background-color: white;
+    left: 0px;
+    top:7px;
+}
+.regedit-user-left
+{
+    position: relative;
+    width: 36px;
+    height: 40px;
+    background: url("../images/regeditimage/phone.png") no-repeat;
+    background-position-y: -68px;
+    left: 10px;
+}
+.regedit_input
+{
+    position: relative;
+    width: 275px;
+    height: 42px;
+    left:40px;
+    top: -40px;
+}
+.regedit_input input
+{
+    width:275px ;
+    height:42px ;
+}
+.regedit-user1
+{
+    position: relative;
+    width: 360px;
+    height: 44px;
+    border: 1px solid lavender;
+    background-color: white;
+    left: 0px;
+    top:30px;
+}
+.regedit-user-left1
+{
+    position: relative;
+    width: 36px;
+    height: 40px;
+    background: url("../images/regeditimage/phone.png") no-repeat;
+    background-position-y: -35px;
+    left: 10px;
+}
+#regedit_btn
+{
+    position: relative;
+
+    background-color: #49AF4F;
+    top: 60px;
+}
+#regedit_btn input
+{
+    position: relative;
+    width: 360px;
+    height: 44px;
+    background-color: #49AF4F;
+    border: 1px solid #49AF4F;
+    font-family: 微软雅黑;
+    color: white;
+    font-size: 20px;
+    left: 0px;
+    top: 0px;
+}
+#regedit-last
+{
+    position: relative;
+    width:200px;
+    height: 40px;
+    background-color: white;
+    top: 50px;
+}
+#regedit-last ul li
+{
+    float: left;
+    margin-left: 10px;
+    margin-top:10px;
+}
+#regedit-last-right
+{
+    position: relative;
+    width:50px;
+    height: 40px;
+    background-color: white;
+    left: 308px;
+    top: 20px;
+}
+#regedit-body2
+{
+    position: relative;
+    width: 360px;
+    height: 300px;
+    background-color: white;
+    left: 20px;
+}
+.regedit_yanzheng
+{
+    position: relative;
+    width: 232px;
+    height: 45px;
+    border: 1px solid lavender ;
+    background-color: white;
+    left:0px;
+    top:30px;
+}
+.regedit_yanzheng input
+{
+    width:210px;
+    height: 42px;
+}
+.regedit_yanzheng1
+{
+    position: relative;
+    left: 260px;
+    top:-15px;
+}
+.regedit_yanzheng1 input
+{
+    position: relative;
+    left: 0px;
+    width: 100px;
+    height: 45px;
+    border: 1px solid #49AF4F;
+    background-color: white;
+    font-size: 16px;
+    align-content: center;
+    font-family: 微软雅黑;
+    color:#49AF4F ;
+    top:0px;
+}
+.btn-yanzheng
+{
+    position: relative;
+    width: 358px;
+    height: 35.8px;
+    border-radius: 17.9px;
+    top: -20px;
+    background-color:#a8a8a8;
+}
+.btn-yanzheng-small
+{
+    left: 0px;
+    display: block;
+    cursor: pointer;
+    position: absolute;
+    z-index: 2;
+    pointer-event: none;
+}
+.btn-yanzheng-text
+{
+    position: relative;
+    height: 39px;
+    left: 100px;
+    opacity: 1.04869;
+    margin-top: -35px;
+}
+#regedit_btn2
+{
+    position: relative;
+    width: 360px;
+    height: 44px;
+    top: 60px;
+}
+#regedit_btn2 input
+{
+    border: 1px solid #49AF4F;
+    position: relative;
+    font-family: 微软雅黑;
+    width: 360px;
+    height: 44px;
+    color: white;
+    font-size: 20px;
+    background-color: #49AF4F;
+    left: 0px;
+    top: -20px;
+}
+#regedit-last2
+{
+    position: relative;
+    width:200px;
+    height: 40px;
+    background-color: white;
+    margin-top: 50px;
+}
+#regedit-last2 ul li
+{
+    float: left;
+    margin-left: 10px;
+    margin-top:10px;
+}
+#regedit-last-right2
+{
+    position: relative;
+    width:50px;
+    height: 40px;
+    background-color: white;
+    left: 308px;
+    top: -30px;
+}
+#regedit-title
+{
+    width: 440px;
+    height: 40px;
+    background-color: white;
+}
+#regedit-title1
+{
+    position: relative;
+    width: 35px;
+    height: 35px;
+    background-image: url("../images/regeditimage/background.png");
+    background-position-y: -80px;
+    background-position-x: -95px;
+    left: 392px;
+    top:4px;
+}
+#regedit_middle11
+{
+    position: relative;
+    width: 360px;
+    height: 50px;
+    background-color: white;
+    left: 40px;
+}
+#regedit_middle11 ul li
+{
+    float: left;
+    margin-left: 50px;
+    margin-top: -1px;
+}
+#regedit_middle11 span
+{
+    font-family: 微软雅黑;
+    font-size: 25px;
+    color: black;
+
+}
+#regedit-title-right11
+{
+    position: relative;
+    width: 20px;
+    height: 16px;
+    background: url("../images/regeditimage/background2.PNG") no-repeat;
+    background-position-x: -25px;
+    background-position-y: -11px;
+    color: white;
+    left: 260px;
+}
+#regedit-title-right111
+{
+    position: relative;
+    width: 115px;
+    height: 20px;
+    left: 285px;
+    top: -18px;
+}
+#regedit-title-right111 a
+{
+    color: #666666;
+    font-size: 12px;
+    font-family: 宋体;
+}
+#regedit-bo1
+{
+    position: relative;
+    width:441px ;
+    height:620px;
+    border: 1px solid #999999;
+    left: 0px;
+    top:0px;
+}
+
+
+

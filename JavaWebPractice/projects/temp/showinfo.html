@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div, ul, li {
+            margin: 0;
+            padding: 0
+        }
+
+        li {
+            float: left;
+            width: 100px;
+            height: 24px;
+            line-height: 24px;
+            list-style: none;
+            border: solid 1px;
+            text-align: center;
+        }
+
+        #cart {
+            width: 310px;
+            text-align: center;
+        }
+
+        .num input {
+            width: 30px;
+            text-align: center;
+        }
+
+        ul {
+            background-color: cornflowerblue;
+
+        }
+
+        /*ul:nth-child(0) {*/
+        /*background-color: aqua;*/
+        /*}*/
+
+        .num {
+            width: 150px;
+        }
+
+        #total {
+            clear: both;
+            text-align: right;
+            padding-right: 50px;
+            padding-top: 5px;
+        }
+
+        #total span {
+            color: red
+        }
+    </style>
+    <script src="js/jquery-3.3.1.js"></script>
+    <script>
+        $(function () {
+            $.ajax({
+                url: "http://10.96.119.78:8888/ajax/ShowUserServlet",
+                type: "post",
+                dataType: "json",
+                success: function (result) {
+                    for (var i = 0; i < result.length; i++) {
+                        var $node = $("<ul><li>"+result[i].userName+"</li> <li>"+result[i].password+"</li> <li><span id='"+result[i].id+"'>删除</span></li> </ul>");
+                        $("#cart").append($node);
+                    }
+                }
+            })
+
+            $("#cart").on("click","span",function () {
+                $.ajax({
+                    url: "http://10.96.119.78:8888/ajax/DeleteUserServlet?id="+$(this).prop("id"),
+                    type: "get",
+                    dataType: "json",
+                    success:function (result) {
+                        if (result == 1){
+                            //删除节点
+                            $(this).parent().parent().remove();
+                            history.go(0)``
+                        }
+                    }
+                })
+            })
+        });
+
+    </script>
+</head>
+<body>
+<div id="cart">
+    <ul>
+        <li>用户名</li>
+        <li>密码</li>
+        <li>操作</li>
+    </ul>
+
+</div>
+</body>
+</html>

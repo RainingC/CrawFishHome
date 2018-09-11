@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>regesit</title>
+</head>
+<body>
+    <h1>填写用户注册信息</h1>
+    <form>
+        <table name="zhuce" border="1">
+            <tr>
+                <td>用户名：</td>
+                <td>
+                    <input type="text">
+                </td>
+                <td>登录用户名</td>
+            </tr>
+            <tr>
+                <td>密码：</td>
+                <td>
+                    <input type="password">
+                </td>
+                <td>登录密码，6个以上字母数字组合，不区分大小写</td>
+            </tr>
+            <tr>
+                <td>注册邮箱：</td>
+                <td>
+                    <input type="email">
+                </td>
+                <td>登入后不可修改</td>
+            </tr>
+            <tr>
+                <td>性别：</td>
+                <td>
+                    男<input type="radio" name="sex" value="男" checked>
+                    女<input type="radio" name="sex" value="女">
+                </td>
+                <td>选择您的性别</td>
+            </tr>
+            <tr>
+                <td>出生年月：</td>
+                <td>
+                    <input type="date">
+                </td>
+                <td>选择您的出生年月</td>
+            </tr>
+            <tr>
+                <td>兴趣标签：</td>
+                <td>
+                    <input type="checkbox" name="life">生活
+                    <input type="checkbox" name="entertanment">娱乐
+                    <input type="checkbox" name="sport">体育
+                    <br>
+                    <input type="checkbox" name="sal">财经
+                    <input type="checkbox" name="fashion">时尚
+                    <input type="checkbox" name="news">新闻
+                </td>
+                <td>选择您感兴趣的标签</td>
+            </tr>
+            <tr>
+                <td>头像：</td>
+                <td>
+                    <input type="file">
+                </td>
+                <td>选择您的图像文件</td>
+            </tr>
+            <tr>
+                <td>个人简介：</td>
+                <td>
+                    <textarea rows="3" cols="15">
+                        请输入...
+                    </textarea>
+                </td>
+                <td>请添加您的个人简介情况。以便让朋友们更了解您</td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

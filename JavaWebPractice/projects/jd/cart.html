@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div, ul, li {
+            margin: 0;
+            padding: 0
+        }
+
+        li {
+            float: left;
+            width: 100px;
+            height: 26px;
+            line-height: 24px;
+            list-style: none;
+            border: solid 1px;
+            text-align: center;
+        }
+
+        #cart {
+            width: 800px;
+            text-align: center;
+        }
+        .num input {
+            width: 30px;
+            text-align: center;
+        }
+
+        ul{
+            background-color: cornflowerblue;
+
+        }
+
+        /*ul:nth-child(0) {*/
+        /*background-color: aqua;*/
+        /*}*/
+
+        .check{
+            width: 150px;
+        }
+        .num {
+            width: 150px;
+        }
+
+        #total {
+            clear: both;
+            text-align: right;
+            padding-right: 50px;
+            padding-top: 5px;
+        }
+
+        #total span {
+            color: red
+        }
+    </style>
+    <script src="js/jquery-3.3.1.js" type="application/javascript"></script>
+    <script>
+        var pro = ["电脑","u盘","充电器","鼠标"];
+        var price = [5000,23,30,65];
+        $(function(){
+            checked();
+            unchecked();
+            // add();
+            // jian();
+            // jia();
+            // deletee();
+            // cost();
+
+
+
+
+            //绑定所有事件
+            //删除
+            $("input[name='deletee']").click(function () {
+                if (confirm("是否要删除")) {
+                    $(this).closest("ul").remove();
+                }
+                caltotal();
+            })
+            //改数
+            $("input[name='num']").change(function () {
+                var $val = parseInt($(this).val());
+                if ($val > 0) {
+                    $(this).parent().next().text($val * parseFloat($(this).parent().prev().text()));
+                }else{
+                    $(this).val(1);
+                }
+                caltotal()
+            })
+            //减
+            $("input[name='jian']").click(function () {
+                $(this).next().val(parseInt($(this).next().val()) - 1);
+                $("input[name='num']").trigger("change");
+                caltotal();
+            })
+            //加
+            $("input[name='jia']").click(function () {
+                $(this).prev().val(parseInt($(this).prev().val()) + 1);
+                $("input[name='num']").trigger("change");
+                caltotal();
+            })
+            //单选框
+            $("input[type='checkbox']").click(function () {
+                caltotal();
+            })
+
+            var $modelNode = $("#cart ul:eq(1)").detach();
+            $("input[name='add']").click(function () {
+                var i = Math.floor((Math.random() * 4));//0-3
+                var $cloneNode = $modelNode.clone(true);
+                var $children = $cloneNode.children();
+                $children.eq(1).text(pro[i]);
+                $children.eq(2).text(price[i]);
+                $children.eq(4).text(price[i]);
+                $("#cart ul:last").after($cloneNode);
+            })
+
+
+        })
+
+
+        //全选
+        function checked() {
+            $('input[name="all"]').click(function () {
+                $('input[name="one"]').prop("checked",true);
+                caltotal();
+            })
+        }
+
+        //全不选
+        function unchecked() {
+            $('input[name="none"]').click(function () {
+                $('input[name="one"]').prop("checked",false);
+                caltotal();
+            })
+        }
+        //算总价
+        function caltotal() {
+            var total = 0;
+            var $checkbox = $("input[name='one']");
+            var $price = $(".cost");
+            $checkbox.each(function () {
+                if ($(this).prop("checked")){
+                    var i = $checkbox.index($(this));
+                    total += parseFloat($price.eq(i).text());
+                }
+            })
+            $("#total span").text(total);
+        }
+        // //添加条目
+        // var pro = ["电脑","u盘","充电器","鼠标"];
+        // var price = [5000,23,30,65];
+        // function add() {
+        //     $('input[name="add"]').click(function () {
+        //         var i = Math.floor(Math.random()*4);
+        //         $('div[id="cart"] ul:last').after("<ul>\n" +
+        //             "        <li class=\"check\"><input name=\"one\" type=\"checkbox\"></li>\n" +
+        //             "        <li>"+pro[i]+"</li>\n" +
+        //             "        <li>"+price[i]+"</li>\n" +
+        //             "        <li class=\"num\"><input type=\"button\" name='jian' value=\"-\"> <input name=\"num\" type=\"text\" value=\"1\"> <input type=\"button\" name='jia' value=\"+\">\n" +
+        //             "        </li>\n" +
+        //             "        <li class='cost'>"+price[i]+"</li>\n" +
+        //             "        <li><input type='button' name='deletee' value='删除'></li>\n" +
+        //             "    </ul>")
+        //
+        //
+        //     })
+        // }
+        //
+        //
+        // //删除
+        // function deletee(){
+        //     $("#cart").on("click","input[name='deletee']",function () {
+        //         $(this).closest("ul").remove();
+        //     })
+        // }
+        //
+        // //减
+        // function jian() {
+        //     $("#cart").on("click","input[name='jian']",function () {
+        //         $(this).parent().next().replaceWith("<li>"+500+"</li>");
+        //         $(this).next().prop("value",0)
+        //     })
+        // }
+        //
+        // //加
+        // function jia() {
+        //     $("#cart").on("click","input[name='jia']",function () {
+        //         $(this).parent().next().replaceWith("<li>"+1000+"</li>")
+        //         $(this).prev().prop("value",1)
+        //     })
+        // }
+
+    </script>
+</head>
+<body>
+<input name="add" type="button" value="添加">
+<div id="cart">
+    <ul>
+        <li class="check"><input name="all" type="button" value="全选"><input name="none" type="button" value="全不选"></li>
+        <li>产品名称</li>
+        <li>价格</li>
+        <li class="num">数量</li>
+        <li>合计</li>
+        <li>操作</li>
+    </ul>
+    <ul>
+        <li class="check"><input name="one" type="checkbox" value="单选"></li>
+        <li>手机</li>
+        <li>1000</li>
+        <li class="num"><input type="button" name="jian" value="-"> <input name="num" type="text" value="1"> <input type="button" name="jia" value="+"></li>
+        <li class="cost">1000</li>
+        <li><input type='button' name='deletee' value='删除'></li>
+    </ul>
+
+
+    <div id="total">总价:<span>0</span></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery-3.3.1.js" type="application/javascript"></script>
+    <style>
+        div{
+            background-color: #666666;
+            width: 150px;
+            height: 25px;
+        }
+        .content{
+            background-color: #888888;
+            width: 130px;
+            height: 22px;
+            margin-left: 5px;
+        }
+    </style>
+    <script>
+        $(function () {
+            $(".content").hide();
+            $("div:contains('阶段')").click(function () {
+                //操作对象
+                $(".content").hide();
+                $(this).next("span").children().show("slow");
+            })
+        })
+
+    </script>
+</head>
+<body>
+    <div>阶段一</div>
+    <span>
+        <div class="content">java1</div>
+        <div class="content">java2</div>
+        <div class="content">oracle</div>
+    </span>
+    <div>阶段二</div>
+    <span>
+        <div class="content">前端</div>
+        <div class="content">后端</div>
+    </span>
+    <div>阶段三</div>
+    <span>
+        <div class="content">spring</div>
+        <div class="content">springMVC</div>
+        <div class="content">mybatis</div>
+    </span>
+</body>
+</html>

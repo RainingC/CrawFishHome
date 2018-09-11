@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery-3.3.1.js" type="application/javascript"></script>
+    <script>
+        $(function () {
+
+            //判断帐号是否已经存在
+            $("input[name='username']").blur(function () {
+                //send($(this).val());
+                var name = $(this).val();
+                $.ajax({
+                    url:"http://10.96.119.78:8888/ajax/UserServlet?username="+name,
+                    type:"get",
+                    dataType:"text",
+                    success:function (result) {
+                        //alert(result)
+                        if (result == 'false'){
+                            $("#pandingun").text("用户名重复")
+                        } else {
+                            $("#pandingun").text("用户名可以使用")
+                        }
+                    }
+                })
+            })
+            //提交按钮展示所有用户信息
+            $("input[type='submit']").click(function (e) {
+                e.preventDefault();
+                $.ajax({
+                    url:"http://10.96.119.78:8888/ajax/InsertUserServlet",
+                    type:"post",
+                    data:{"userName":$("input[name='username']").val(),"password":$("input[name='password']").val()},
+                    dataType:"text",
+                    success:function (result) {
+                        if (result == "1"){
+                            //location.href = "showinfo.html";
+                        } else{
+                            $("#messdiv").text("提交失败");
+                        }
+                    }
+                })
+            })
+
+            // //1、创建对象
+            // var xmlhttp;
+            // function createXmlHttp() {
+            //     try {
+            //         xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
+            //     }catch (e) {
+            //         try {
+            //             xmlhttp = new ActiveXObject("Microsort.XMLHTTP");
+            //         }catch (e) {
+            //             try {
+            //                 xmlhttp = new XMLHttpRequest();
+            //                 if (xmlhttp.overrideMimeType){
+            //                     xmlhttp.overrideMimeType("text/xml");
+            //                 }
+            //             }catch (e) {
+            //
+            //             }
+            //         }
+            //     }
+            // }
+            // //2、发送函数
+            // function send(name) {
+            //     createXmlHttp();
+            //     var url = "http://10.96.119.78:8888/ajax/UserServlet?uesrname = " + name;
+            //     xmlhttp.open("get", url,true);
+            //     //xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+            //     xmlhttp.onreadystatechange = callback1;
+            //     xmlhttp.send(null);
+            // }
+            // //3、回调函数
+            // function callback1() {
+            //     if (xmlhttp.readyState == 4){
+            //         if (xmlhttp.status == 200){
+            //             if (xmlhttp.responseText == "false"){
+            //                 messdiv.innerHTML = '用户名可以使用';
+            //             } else {
+            //                 messdiv.innerHTML = '用户名不可使用';
+            //             }
+            //         } else{
+            //             alert("请求处理返回的数据有错误")
+            //         }
+            //     }
+            // }
+
+
+
+            //文本框类型元素，需要单独判断，keypress、blur
+            $("input[name='username']").keyup(function () {
+                if ($(this).next().prop("tagName") == "SPAN"){
+                    $(this).next().remove();
+                }
+                var str = $(this).val();
+                var regStr = /^\w{4,20}$/;
+                if(!regStr.test(str)){
+                    var $error = $('<span class="error">用户名不符合要求！</span>')
+                    $(this).after($error);
+                }
+            });
+            $("input[name='password']").keyup(function () {
+                if ($(this).next().prop("tagName") == "SPAN"){
+                    $(this).next().remove();
+                }
+                var str = $(this).val();
+                var regStr = /^.{6,20}$/;
+                if(!regStr.test(str)){
+                    var $error = $('<span class="error">密码长度不能小于6位！</span>')
+                    $(this).after($error);
+                }
+            });
+            $("input[name='email']").blur(function () {
+                if ($(this).next().prop("tagName") == "SPAN"){
+                    $(this).next().remove();
+                }
+                var str = $(this).val();
+                var reg = /^[a-z\d]+(\.[a-z\d]+)*@([\da-z](-[\da-z])?)+(\.{1,2}[a-z]+)+$/;
+                if(!reg.test(str)){
+                    var $error = $('<span class="error">邮箱不符合格式！</span>')
+                    $(this).after($error);
+                }
+            });
+            //单选、复选、下拉菜单在表单提交时进行判断
+            //表单提交还要再次判断文本框验证 ->模拟事件
+            //当所有判断都通过后，需要手动提交表单
+            $("input[value='提交']").click(function () {
+                $("input[name='username']").trigger("keyup");
+                $("input[name='password']").trigger("keyup");
+                $("input[name='email']").trigger("blur");
+                if ($(this).next().prop("tagName") == "SPAN"){
+                    $(this).next().remove();
+                }
+                if ($("select").val()==0){
+                    var $error = $('<span class="error">请选择月份！</span>')
+                    $(this).after($error)
+                }
+                //手动提交
+                if($(".error").length == 0){
+                    $("form").submit;
+                }
+            })
+        })
+    </script>
+    <style>
+        .error{
+            color: #e01222;
+        }
+    </style>
+</head>
+<body>
+<form>
+    户名：<input type="text" name="username"><dd id="pandingun" style="display: inline;"></dd>（由数字、字母和下划线组成）<br>
+    密码：<input type="password" name="password"><dd id="pandingpw" style="display: inline;"></dd>（不得少于6）<br>
+    密码：<input type="password" name="repassword"><dd id="pandingmm" style="display: inline;"></dd>（不得少于6）<br>
+    邮箱：<input type="text" name="email"><br>
+    性别：<input type="radio" name="sex" value="man"> 男 <input type="radio" name="sex" value="woman"> 女<br>
+    月份：
+    <select name="month">
+        <option value="0">请选择...</option>
+        <option value="1">一月</option>
+        <option value="2">二月</option>
+        <option value="3">三月</option>
+        <option value="4">四月</option>
+    </select><br>
+    <input type="submit" value="提交">
+    <div id="messdiv"></div>
+</form>
+</body>
+</html>

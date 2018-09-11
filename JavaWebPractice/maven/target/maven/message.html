@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>留言板</title>
+    <style>
+        div {
+            margin: 0;
+            padding: 0;
+            font-size: 12px;
+            margin: 0 auto;
+        }
+
+        h3 {
+            text-align: center
+        }
+
+        #container {
+            width: 500px;
+        }
+
+        .article {
+            border: 1px solid #a6cbe7;
+            margin-top: 5px;
+        }
+
+        .author {
+            background-color: #0099FF;
+            width: 100%;
+            height: 24px;
+            line-height: 24px;
+        }
+
+        .content {
+            height: 40px;
+            padding: 10px;
+        }
+
+        .author span {
+            float: right;
+            padding-right: 10px;
+        }
+
+        .time {
+            border-top: solid 1px #a6cbe7;
+        }
+
+        .page {
+            text-align: right;
+            height: 30px;
+            line-height: 30px;
+            padding-right: 10px;
+        }
+    </style>
+    <script src="js/jquery-3.3.1.js" type="application/javascript"></script>
+    <script src="js/layer.js" type="application/javascript"></script>
+    <script src="js/jquery.validate.js" type="application/javascript"></script>
+    <script>
+        var num = 1;
+        var preList;
+        var rsCount = 0;
+        var pageSize = 5;
+        var maxPage = 0;
+        function load(){
+            $.ajax(
+                {
+                    url:"/showUser",
+                    type:"post",
+                    data:{"num":num},
+                    dataType:"json",
+                    success:function (list) {
+                        //若当前显示不出数据，则说明当前是最后一页，使用前一页的信息显示
+                        if (list.length == 0){
+                            list = preList;
+                            num--;
+                        } else{
+                            preList = list;
+                        }
+                        for(var i=0;i<list.length-1;i++)
+                        {
+                            var $node=$('<div class="article"><div class="author">用户名：'+list[i].username+'<span>'+list[i].id+'</span></div><div class="content">'+list[i].msg+'</div><div class="page time">'+list[i].createTime+'</div></div>');
+                            $("#show").append($node);
+                        }
+                        rsCount = list[list.length - 1]
+                    }
+                }
+            );
+        }
+        $(function () {
+            load();
+            $(".btn:eq(0)").click(function () {
+                num = num > 1 ? --num :num;
+                $("#show").children().remove();
+                load();
+            })
+            $(".btn:eq(1)").click(function () {
+                //计算最大页数
+                maxPage = Math.ceil(rsCount/pageSize);
+                num = num < maxPage? ++num :maxPage;
+                $("#show").children().remove();
+                load();
+            })
+
+            $().ready(function() {
+                $("#myform").validate({
+                    onsubmit:true,// 是否在提交是验证
+                    onfocusout:false,// 是否在获取焦点时验证
+                    onkeyup :false,// 是否在敲击键盘时验证
+
+                    rules: {　　　　//规则
+                        author: {　　//要对应相对应的input中的name属性
+                            required: true
+                        },
+                        mesg: {
+                            required: true
+                        }
+                    },
+                    messages:{　　　　//验证错误信息
+                        author: {
+                            required: "请输入用户名"
+                        },
+                        mesg: {
+                            required: "请输入发送信息"
+                        }
+                    },
+                    submitHandler: function() { //通过之后回调
+                        $.ajax({
+                            url : "/addUser",
+                            type : "post",
+                            dataType : "text",
+                            data: {
+                                "username":$("input[name='author']").val(),
+                                "msg":$("textarea[name='mesg']").val(),
+                            },
+                            success : function(ret) {
+                                //要执行的代码
+                                if(ret == 1){
+                                    layer.msg("留言成功",{time:1000},function () {
+                                        location.reload();
+                                    })
+                                }
+                            }
+                        });
+                    },
+                    invalidHandler: function(form, validator) {return false;}
+                });
+            });
+            // $("input[type='submit']").click(function (e) {
+            //     e.preventDefault();
+            //     $.ajax({
+            //         url:"/addUser",
+            //         type:"post",
+            //         data:{"username":$("input[name='author']").val(),"msg":$("textarea[name='mesg']").val()},
+            //         dataType:"text",
+            //         success:function (ret) {
+            //             if(ret=="1")
+            //             {
+            //                 layer.msg('留言成功',{time:1000},function () {
+            //                     location.reload();
+            //                 })
+            //             }
+            //         }
+            //     })
+            // })
+        })
+    </script>
+</head>
+<body>
+<div id="container">
+    <div><h3>留言板</h3></div>
+    <div id="show">
+    </div>
+    <div class="page">
+        <input class="btn" type="button" value="上一页">
+        <input class="btn" type="button" value="下一页">
+    </div>
+    <form id="myform">
+        <div>
+            用户名：<input type="text" placeholder="请输入您的用户名" name="author">
+        </div>
+        <div>
+            留言板<textarea rows="5" cols="85" name="mesg"></textarea>
+        </div>
+        <div>
+            <input type="button" value="删除" name="delect">
+            <input type="submit" value="发送" name="send">
+        </div>
+    </form>
+</div>
+</body>
+</html>

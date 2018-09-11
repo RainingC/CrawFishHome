@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery-3.3.1.js" type="application/javascript"></script>
+    <script>
+        var provinces = ['一级分类', '办公效率', '职场发展', '职业岗位', '人工智能', 'IT&互联网', '语言留学', '职场之外'];
+        var citys = [
+            ['二级分类'],
+            ["办公软件","工作效率","电脑基础","考试认证"],
+            ["个人提升","职场能力","求职应聘","商学院"],
+            ["设计软件","平面设计","其他设计","市场营销","人力资源管理"],
+            ["数据科学","人工智能","区块链","智能设备和物联网"],
+            ["编程语言","前端开发","后端开发","移动开发","网络与运维"],
+            ["英语口语","新概念英语","零基础","少儿英语","英语考试"],
+            ["摄影影视","音乐乐器","运动健康","兴趣修养","居家生活"]];
+
+        $(function () {
+            init();
+            provincechange(citys);
+        })
+
+        function init() {
+            var province = document.getElementById('param_province');
+            //给选择框一个高度，可直接写进数据，不然要先创建dom元素option再录值
+            province.length = provinces.length;
+            for (var i = 0; i < provinces.length; i++) {
+                province.options[i].text = provinces[i];
+                province.options[i].value = provinces[i];
+            }
+        }
+
+        function provincechange(n) {
+            var city = document.getElementById('param_city');
+            var citystemp = citys[n];
+            city.length = citystemp.length;
+            for (var i = 0; i < citystemp.length; i++) {
+                city.options[i].text = citystemp[i];
+                city.options[i].value = citystemp[i];
+            }
+            city.options[0].selected = true;
+        }
+    </script>
+</head>
+<body>
+<div class="ws-text-city">
+    所在地区：
+    <select name="province" id="param_province" onchange="provincechange(this.selectedIndex)">
+        <option>请选择省份</option>
+    </select>
+    城市：
+    <select name="city" id="param_city">
+        <option>请选择城市</option>
+    </select>
+</div>
+</body>
+</html>
